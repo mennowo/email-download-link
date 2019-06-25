@@ -42,3 +42,17 @@ This plugin will send a download link to user after they have submitted a form. 
 * Version 1.5 bug fix
 * WP Cron option to refresh download link
 * Group option in download form to group the download links
+
+********************************Version 1.7************************************************************
+
+* Google reCAPTCHA option added in the plugin. reCAPTCHA helps prevent bots from adding fake or malicious email addresses to your list.
+
+********************************Version 1.8************************************************************
+
+* Tested up to 5.0
+* Typo error in Download Form is fixed
+* "Updating Failed" error message when adding plugin shortcode in Shortcode Block is fixed
+
+********************************Version 1.9************************************************************
+
+* Tested up to 5.1

@@ -126,6 +126,9 @@ class ed_cls_registerhook
 			
 		add_submenu_page('email-download-link', __( 'Email download link', 'email-download-link' ), 
 			__( 'Download History', 'email-download-link' ), "manage_options", 'ed-downloadhistory', array( 'ed_cls_intermediate', 'ed_downloadhistory' ));
+			
+		add_submenu_page('email-download-link', __( 'Email download link', 'email-download-link' ), 
+			__( 'Google reCAPTCHA', 'email-download-link' ), "manage_options", 'ed-recaptcha', array( 'ed_cls_intermediate', 'ed_recaptcha' ));
 	}
 	
 	public static function ed_widget_loading() {
@@ -174,6 +177,17 @@ class ed_cls_registerhook
 					);
 					wp_localize_script( 'ed-downloadhistory', 'ed_downloadhistory_script', $ed_script_params );
 					break;
+					
+				case 'ed-recaptcha':
+					wp_register_script( 'ed-recaptcha', ED_URL . 'recaptcha/recaptcha.js', '', '', true );
+					wp_enqueue_script( 'ed-recaptcha' );
+					$ed_script_params = array(
+						'ed_recaptcha_sitekey_add'		=> _x( 'Please enter valid site key value.', 'ed-recaptcha-script', 'email-download-link' ),
+						'ed_recaptcha_secretkey_add'	=> _x( 'Please enter valid secret key value.', 'ed-recaptcha-script', 'email-download-link' ),
+						'ed_recaptcha_save_all'			=> _x( 'Do you want to update all the details.', 'ed-recaptcha-script', 'email-download-link' ),
+					);
+					wp_localize_script( 'ed-recaptcha', 'ed_recaptcha_script', $ed_script_params );
+					break;
 			}
 		}
 	
@@ -218,6 +232,7 @@ class ed_form_submuit
 		$ed_alt_pr = '';
 		$ed_alt_success = '';
 		$ed_alt_techerror = '';
+		$ed_alt_recaptcha = '';
 		$ed_error = false;
 		
 		if(count($form_setting) == 0)
@@ -261,6 +276,10 @@ class ed_form_submuit
 			}
 		}
 		
+		//////////////////////////////Robot verification//////////////////////////////////////////////////
+		$ed_captcha_widget = get_option('ed_captcha_widget', '');
+		//////////////////////////////Robot verification//////////////////////////////////////////////////
+	
 		if ( isset( $_POST['ed_btn'] ) ) 
 		{
 			check_admin_referer('ed_form_subscribers');
@@ -311,7 +330,30 @@ class ed_form_submuit
 				$ed_alt_gp = '<span class="ed_validation" style="'.ED_MSG_05.'">'.ED_MSG_07.'</span>';
 				$ed_error = true;
 			}
-
+			
+			//////////////////////////////Robot verification//////////////////////////////////////////////////
+			if(!$ed_error)
+			{
+				if($ed_captcha_widget == 'YES')
+				{
+					$ed_captcha_secret = get_option('ed_captcha_secret');
+					$verifyResponse = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret='.$ed_captcha_secret.'&response='.$_POST['g-recaptcha-response']);
+					$responseData = json_decode($verifyResponse);
+					if(!$responseData->success)
+					{
+						$ed_alt_recaptcha = __('Robot verification failed, please try again.', 'email-download-link');
+						$ed_error = true;
+					}
+				}
+			}
+			
+			if($ed_error && $ed_alt_recaptcha <> "")
+			{
+				$ed_alt_recaptcha = '<span class="ed_validation" style="'.ED_MSG_05.'">'.$ed_alt_recaptcha.'</span>';
+				$ed_error = true;
+			}
+			//////////////////////////////Robot verification//////////////////////////////////////////////////
+			
 			if($ed_cb_pr <> "iagree")
 			{
 				$ed_alt_pr = '<span class="ed_validation" style="'.ED_MSG_05.'">'.ED_MSG_08.'</span>';
@@ -339,6 +381,13 @@ class ed_form_submuit
 			}
 		}
 		
+		//////////////////////////////Robot verification//////////////////////////////////////////////////
+		if($ed_captcha_widget == 'YES')
+		{
+			$ed = $ed  . '<script src="https://www.google.com/recaptcha/api.js" async defer></script>';
+		}
+		//////////////////////////////Robot verification//////////////////////////////////////////////////
+	
 		$ed = $ed . '<form method="post" action="' . esc_url( $_SERVER['REQUEST_URI'] ) . '">';
 		
 		if($ed_desc	<> "")
@@ -402,6 +451,17 @@ class ed_form_submuit
 			$ed = $ed . '<br>' . $ed_alt_gp;
 			$ed = $ed . '</p>';
 		}
+		
+		//////////////////////////////Robot verification//////////////////////////////////////////////////
+		if($ed_captcha_widget == 'YES')
+		{
+			$ed_captcha_sitekey = get_option('ed_captcha_sitekey');
+			$ed = $ed . '<p>';
+				$ed = $ed . '<div class="g-recaptcha" data-sitekey="'.$ed_captcha_sitekey.'"></div>';	
+				$ed = $ed . $ed_alt_recaptcha;
+			$ed = $ed . '</p>';
+		}
+		//////////////////////////////Robot verification//////////////////////////////////////////////////
 
         $settings = ed_cls_settings::ed_setting_select(1);
         if($settings['ed_c_privacyconditionslink'] !== '') {

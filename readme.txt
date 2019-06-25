@@ -2,10 +2,11 @@
 Original author: gopiplus, www.gopiplus.com
 Author for version 2.0.0: Menno van der Woude, www.codingconnected.eu
 Author URI: https://www.codingconnected.eu/
+Plugin URI: http://www.gopiplus.com/work/2016/03/01/email-download-link-wordpress-plugin/
 Tags: contact form, download, download form, email link
 Requires at least: 4.0
-Tested up to: 4.9.6
-Stable tag: 2.0.0
+Tested up to: 5.2
+Stable tag: 1.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -23,6 +24,7 @@ This plugin will send a download link to user after they have submitted a form. 
 *  Track your download history.
 *  Export signing up email address.
 *  Refresh download link automatically with specific interval.
+*  Google reCAPTCHA option.
 
 ### Plugin configuration
 
@@ -140,6 +142,20 @@ Option 3:
 
 * Version 1.6 bug fix
 
+= 1.7 =
+
+* Google reCAPTCHA option added in the plugin. reCAPTCHA helps prevent bots from adding fake or malicious email addresses to your list.
+
+= 1.8 =
+
+* Tested up to 5.0
+* Typo error in Download Form is fixed
+* "Updating Failed" error message when adding plugin shortcode in Shortcode Block is fixed
+
+= 1.9 =
+
+* Tested up to 5.1
+
 = 2.0.0 =
 
 * Added an option to display a checkbox for privacy consent.
@@ -185,6 +201,20 @@ Option 3:
 = 1.6.1 =
 
 * Version 1.6 bug fix
+
+= 1.7 =
+
+* Google reCAPTCHA option added in the plugin. reCAPTCHA helps prevent bots from adding fake or malicious email addresses to your list.
+
+= 1.8 =
+
+* Tested up to 5.0
+* Typo error in Download Form is fixed
+* "Updating Failed" error message when adding plugin shortcode in Shortcode Block is fixed
+
+= 1.9 =
+
+* Tested up to 5.1
 
 = 2.0.0 =
 

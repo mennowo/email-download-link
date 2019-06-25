@@ -76,5 +76,20 @@ class ed_cls_intermediate
 				break;
 		}
 	}
+	
+	public static function ed_recaptcha()
+	{
+		global $wpdb;
+		$current_page = isset($_GET['ac']) ? $_GET['ac'] : '';
+		switch($current_page)
+		{
+			case 'add':
+				require_once(ED_DIR.'recaptcha'.DIRECTORY_SEPARATOR.'recaptcha-add.php');
+				break;
+			default:
+				require_once(ED_DIR.'recaptcha'.DIRECTORY_SEPARATOR.'recaptcha-add.php');
+				break;
+		}
+	}
 }
 ?>

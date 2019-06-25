@@ -3,7 +3,7 @@
 Plugin Name: Email download link
 Plugin URI: http://www.gopiplus.com/work/2016/03/01/email-download-link-wordpress-plugin/
 Description: This plugin will send a download link to user after they have submitted a form. i.e. Send email with download link to users after signing up. There are lots of reasons you might want to send to a download link to your user after they have submitted a form.
-Version: 1.6.1
+Version: 1.9
 Author: Gopi Ramasamy
 Donate link: http://www.gopiplus.com/work/2016/03/01/email-download-link-wordpress-plugin/
 Author URI: http://www.gopiplus.com/work/2016/03/01/email-download-link-wordpress-plugin/
@@ -14,7 +14,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
 
 /*  
-Copyright 2017 Email download link (http://www.gopiplus.com)
+Copyright 2019 Email download link (http://www.gopiplus.com)
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License, version 2, as 
