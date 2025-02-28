@@ -1,6 +1,7 @@
 Plugin Name	: Email download link
-Authors		: Gopi Ramasamy, Menno van der Woude
-Author URI	: http://www.codingconnected.eu
+Plugin URI	: http://www.gopiplus.com/work/2016/03/01/email-download-link-wordpress-plugin/
+Author		: Gopi Ramasamy
+Author URI	: http://www.gopiplus.com
 License		: GPLv2 or later
 License URI	: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -25,5 +26,7 @@ License URI	: http://www.gnu.org/licenses/gpl-2.0.html
 == Credits and Thanks == 
 
 WordPress Codex : http://codex.wordpress.org
+Credits : http://www.gopiplus.com
+Live Demo : http://www.gopiplus.com/work/2016/03/01/email-download-link-wordpress-plugin/
 
 Special thanks to plugins@wordpress.org for code review.

@@ -56,3 +56,94 @@ This plugin will send a download link to user after they have submitted a form. 
 ********************************Version 1.9************************************************************
 
 * Tested up to 5.1
+
+********************************Version 2.0************************************************************
+
+* Tested up to 5.2
+* New keywords (###NAME###, ###EMAIL###, ###TITLE###) added for download link email subject
+* Feature added to set the position after form submit.
+
+********************************Version 2.1************************************************************
+
+* Tested up to 5.3
+* Option added to NOT SAVE name and email address. This will be useful those who don't want to save their downloader name and email. Save downloader name/email option at plugin setting page. This option is useful for GDPR privacy policy.
+
+********************************Version 2.2************************************************************
+
+* Changes in the download forms, Ajax submission introduced to stop duplicate email.
+
+********************************Version 2.3************************************************************
+
+* Bug in the uninstall.php is fixed.
+* Direct download link is added in the download page.
+* Admin option added to update form successful submit message (Go to setting page in the admin dashboard to find the option).
+* Download history (Name and Email) will be deleted automatically after N number of days. (Go to setting page in the admin dashboard to find the option to set number of days).
+
+********************************Version 2.4************************************************************
+
+* Option added in the setting admin page to SHOW or HIDE direct download link in the download page.
+
+********************************Version 2.5************************************************************
+
+* New admin layout for settings and security menu. 
+* Added security option in the download form submission (Option to block the submission by Domain, IP).
+* Throttling mechanism is added to protect spam submission.
+* Option added to filter bad word in the download form name.
+* Plugin date and time format is changed in the admin display as per default format of the blog.
+* New default template design is added in the plugin template section.
+* Option added to enable/disable GDPR checkbox in download form.
+
+********************************Version 2.6************************************************************
+
+* Bug fix - Email not send if GDPR checkbox is not checked.
+
+********************************Version 2.7************************************************************
+
+1. Phone number input box added in the download form. (New parameter in short code)
+2. <span> tag added for the download box caption. Now we can hide Name and Email caption in the download form using below CSS class.
+
+********************************Version 2.8************************************************************
+
+* Tested up to 5.4
+
+********************************Version 2.9************************************************************
+
+* Tested up to 5.5
+
+********************************Version 3.0************************************************************
+
+* Tested up to 5.6
+* New export option added to export download emails with download form title.
+
+********************************Version 3.1************************************************************
+
+* CURLOPT_USERAGENT parameter added in the download code.
+* Minor cosmetic change in the form.
+
+********************************Version 3.2************************************************************
+
+* Tested up to 5.7
+
+********************************Version 3.3************************************************************
+
+* Tested up to 5.8
+* Use plugin short code in the widget.
+
+********************************Version 3.4************************************************************
+
+* Added new keyword ###PHONE### in the admin mail content.
+
+********************************Version 3.5************************************************************
+
+* Tested up to 5.9
+* Added new option in the cron run (Refresh on every Mon, Wed and Friday)
+
+********************************Version 3.6************************************************************
+
+* Tested up to 5.9.3
+* Added CSS class to the download form to use it to change the form design.
+
+********************************Version 3.7************************************************************
+
+* Tested up to 6.0
+* Security fix

@@ -1,0 +1,912 @@
+# Translation of Plugins - Email download link - Development (trunk) in French (France)
+# This file is distributed under the same license as the Plugins - Email download link - Development (trunk) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2019-11-26 20:49+0800\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Poedit 1.5.7\n"
+"Language: fr\n"
+"Project-Id-Version: Plugins - Email download link - Development (trunk)\n"
+"POT-Creation-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+
+#: classes/ed-register.php:134
+msgid "reCAPTCHA"
+msgstr "reCAPTCHA"
+
+#: classes/ed-register.php:131
+msgid "History"
+msgstr "Historique"
+
+#: settings/settings-edit.php:307
+msgid ""
+"This option is to SHOW or HIDE direct download link in the download page. "
+"Set NO if you dont like to show direct download link to your users."
+msgstr ""
+"Cette option sert à MONTRER ou CACHER le lien de téléchargement direct. "
+"Mettre NON si vous ne voulez pas montrer le lien de téléchargement direct à "
+"vos utilisateurs."
+
+#: settings/settings-edit.php:306
+msgid "Show direct download"
+msgstr "Montrer le téléchargement direct"
+
+#: job/ed-download.php:85
+msgid "Your download should automatically begin in a few seconds. "
+msgstr ""
+"Votre téléchargement va démarrer automatiquement dans quelques secondes."
+
+#: downloads/downloads-show.php:164
+msgid "FAQ"
+msgstr "FAQ"
+
+#: job/ed-download.php:79
+msgid "If download not start after "
+msgstr "Si le téléchargement de démarre pas après"
+
+#: settings/settings-edit.php:290
+msgid ""
+"Automatically delete download history after specific number of days. Plugin "
+"use WP CRON option to delete the history."
+msgstr ""
+"Supprimer automatiquement l'historique des téléchargements après un certain "
+"nombre de jours. Ce plugin utilise l'option WP CRON pour supprimer "
+"l'historique."
+
+#: settings/settings-edit.php:289
+msgid "Auto delete download history"
+msgstr "Suppression automatique de l'historique de téléchargement"
+
+#: settings/settings-edit.php:271
+msgid "Message to display after download link form submission successfully."
+msgstr "Message à afficher après la soumission du formulaire avec succès."
+
+#: settings/settings-edit.php:270
+msgid "Successful message"
+msgstr "Message de succès"
+
+#: classes/ed-register.php:149 classes/ed-sendemail.php:444
+msgid "Oops.. Unexpected error occurred."
+msgstr "Erreur inattendue s'est produite."
+
+#: classes/ed-register.php:147 classes/ed-sendemail.php:442
+msgid "Name seems invalid."
+msgstr "Le nom semble invalide."
+
+#: settings/settings-edit.php:278
+msgid ""
+"Set NO if you do not want to save downloader name and email, instead plugin "
+"use default name and email to count the download history. This option is "
+"useful for GDPR privacy policy."
+msgstr ""
+"Mettre Non si vous ne voulez pas sauvegarder les nom et email des "
+"utilisateurs, à la place le plug-in utilisera les nom et email par défaut "
+"pour compter le nombre de téléchargements. Cette option est pratique pour la "
+"politique de vie privée RGPD."
+
+#: settings/settings-edit.php:277
+msgid "Save downloader name/email"
+msgstr "Enregistrer les nom et email de l'utilisateur"
+
+#: classes/ed-register.php:88
+msgid "These tables could not be created on installation "
+msgstr "Ces tables ne peuvent pas être créées à l'installation."
+
+#: recaptcha/recaptcha-add.php:103
+msgid "Please enter your site key for reCaptcha."
+msgstr "Veuillez saisir la clé de site pour reCaptcha"
+
+#: recaptcha/recaptcha-add.php:101
+msgid "reCaptcha Site key"
+msgstr "Clé de site reCaptcha"
+
+#: recaptcha/recaptcha-add.php:99
+msgid "Please enter your secret key for reCaptcha."
+msgstr "Veuillez saisir votre clé secrète pour reCaptcha."
+
+#: recaptcha/recaptcha-add.php:97
+msgid "reCaptcha Secret key"
+msgstr "Clé secrète reCaptcha"
+
+#: recaptcha/recaptcha-add.php:95
+msgid "Add reCaptcha in the download link form."
+msgstr "Ajouter reCaptcha dans le formulaire de téléchargement."
+
+#: recaptcha/recaptcha-add.php:90
+msgid "reCaptcha option"
+msgstr "Option reCaptcha"
+
+#: recaptcha/recaptcha-add.php:87
+msgid "Google reCaptcha Setup"
+msgstr "Configuration de Google reCaptcha"
+
+#: recaptcha/recaptcha-add.php:36
+msgid "Captcha details successfully updated."
+msgstr "Configuration reCaptcha mise à jour avec succès."
+
+#: classes/ed-register.php:152 classes/ed-register.php:410
+#: classes/ed-sendemail.php:447
+msgid "Robot verification failed, please try again."
+msgstr "La vérification du robot a échouée, veuillez essayer à nouveau."
+
+#: classes/ed-register.php:216
+msgctxt "ed-recaptcha-script"
+msgid "Do you want to update all the details."
+msgstr "Voulez-vous mettre à jour toutes les informations ?"
+
+#: classes/ed-register.php:215
+msgctxt "ed-recaptcha-script"
+msgid "Please enter valid secret key value."
+msgstr "Veuillez saisir une clé secrète valide."
+
+#: classes/ed-register.php:214
+msgctxt "ed-recaptcha-script"
+msgid "Please enter valid site key value."
+msgstr "Veuillez saisir une clé de site valide."
+
+#: settings/settings-sync.php:33
+msgid "Click to sync tables"
+msgstr "Cliquez pour synchroniser les tables"
+
+#: settings/settings-sync.php:29
+msgid "Sync plugin tables"
+msgstr "Synchroniser les tables du plugin"
+
+#: settings/settings-sync.php:16
+msgid "Table sync completed successfully."
+msgstr "Succès de la synchronisation des tables"
+
+#: downloads/downloads-show.php:96
+msgid "View"
+msgstr "Voir"
+
+#: downloads/downloads-show.php:69 downloads/downloads-show.php:80
+msgid "Expiration"
+msgstr "Expiration"
+
+#: downloads/downloads-show.php:68 downloads/downloads-show.php:79
+msgid "Expire"
+msgstr "Expire"
+
+#: downloads/downloads-show.php:65 downloads/downloads-show.php:76
+msgid "Short Codes"
+msgstr "Short Codes"
+
+#: downloads/downloads-show.php:64 downloads/downloads-show.php:75
+msgid "Link"
+msgstr "Lien"
+
+#: downloads/downloads-add.php:159 downloads/downloads-view.php:66
+#: downloads/downloads-edit.php:155 downloads/downloads-show.php:67
+#: downloads/downloads-show.php:78
+msgid "Group"
+msgstr "Groupe"
+
+#: downloads/downloads-add.php:58 downloads/downloads-add.php:174
+#: downloads/downloads-edit.php:179
+msgid "Please select or enter your group name for this download link."
+msgstr ""
+"Veuillez entrer ou sélectionner votre nom de groupe pour ce lien de "
+"téléchargement"
+
+#: cron/cron-add.php:198
+msgid "Next download link refresh"
+msgstr "Prochain rafraîchissement du lien de téléchargement"
+
+#: cron/cron-add.php:197
+msgid "Last run"
+msgstr "Dernier avancement"
+
+#: cron/cron-add.php:196
+msgid "Actions"
+msgstr "Actions"
+
+#: cron/cron-add.php:195
+msgid "Hook name"
+msgstr "Nom du point d’accroche "
+
+#: cron/cron-add.php:139
+msgid ""
+"NO : Plugin will not use WP CRON option to refresh download URLs you have to "
+"configure CRON JOB in your server using below Cron job URL."
+msgstr ""
+"NON : Le plugin n'utilisera pas les options WP CRON pour rafraîchir les URLs "
+"de téléchargement, vous devez configurer le CRON JOB sur votre serveur en "
+"utilisant les URLs CRON JOB ci-dessous."
+
+#: cron/cron-add.php:138
+msgid ""
+"YES : Plugin will use WP CRON option to refresh download URLs. No manual "
+"configuration is required."
+msgstr ""
+"OUI : Le plugin utilisera les options de WP CRON pour rafraîchir les URLs de "
+"téléchargement. Aucune configuration manuelle n'est requise."
+
+#: cron/cron-add.php:134
+msgid "YES (Use WP CRON, Refresh on every Sunday and Wednesday)"
+msgstr "OUI (Utilise le WP CRON, se rafraîchit chaque Dimanche et Mercredi)"
+
+#: cron/cron-add.php:133
+msgid "YES (Use WP CRON, Refresh on every Saturday)"
+msgstr "OUI (Utilise le WP CRON, se rafraîchit chaque Samedi)"
+
+#: cron/cron-add.php:132
+msgid "YES (Use WP CRON, Refresh on every Friday)"
+msgstr "OUI (Utilise le WP CRON, se rafraîchit chaque Vendredi)"
+
+#: cron/cron-add.php:131
+msgid "YES (Use WP CRON, Refresh on every Thursday)"
+msgstr "OUI (Utilise le WP CRON, se rafraîchit chaque Jeudi)"
+
+#: cron/cron-add.php:130
+msgid "YES (Use WP CRON, Refresh on every Wednesday)"
+msgstr "OUI (Utilise le WP CRON, se rafraîchit chaque Mercredi)"
+
+#: cron/cron-add.php:129
+msgid "YES (Use WP CRON, Refresh on every Tuesday)"
+msgstr "OUI (Utilise le WP CRON, se rafraîchit chaque Mardi)"
+
+#: cron/cron-add.php:128
+msgid "YES (Use WP CRON, Refresh on every Monday)"
+msgstr "OUI (Utilise le WP CRON, se rafraîchit chaque Lundi)"
+
+#: cron/cron-add.php:127
+msgid "YES (Use WP CRON, Refresh on every Sunday)"
+msgstr "OUI (Utilise le WP CRON, se rafraîchit chaque Dimanche)"
+
+#: cron/cron-add.php:126
+msgid "YES (Use WP CRON, Daily refresh)"
+msgstr "OUI (Utilise le WP CRON, se rafraîchit chaque jour)"
+
+#: cron/cron-add.php:124
+msgid "WordPress Cron"
+msgstr "WordPress Cron"
+
+#: recaptcha/recaptcha-add.php:8 cron/cron-add.php:8
+#: settings/settings-edit.php:10 subscribers/subscribers-show.php:10
+#: downloads/downloads-show.php:9
+msgid "Click Here"
+msgstr "Cliquez ici"
+
+#: classes/ed-register.php:697
+msgid "Select download group for this form."
+msgstr "Sélectionnez un groupe de téléchargement pour ce formulaire."
+
+#: classes/ed-register.php:666
+msgid "Set NAME box is mandatory box?"
+msgstr "La case de nom est-elle une case obligatoire ?"
+
+#: downloads/downloads-add.php:161 downloads/downloads-edit.php:157
+#: classes/ed-register.php:530 classes/ed-shortcode.php:126
+msgid "Select"
+msgstr "Sélection"
+
+#: classes/ed-register.php:526 classes/ed-shortcode.php:123
+msgid "Downloads *"
+msgstr "Téléchargements*"
+
+#: classes/ed-register.php:205
+msgctxt "ed-download-script"
+msgid "Do you want to export the emails?"
+msgstr "Voulez-vous exporter les emails ?"
+
+#: classes/ed-register.php:181
+msgctxt "ed-download-script"
+msgid "Please select or enter your group name for this download link."
+msgstr ""
+"Veuillez sélectionner ou entrer un nom de groupe pour ce lien de "
+"téléchargement."
+
+#: classes/ed-register.php:180
+msgctxt "ed-download-script"
+msgid "Please select your refresh type for the download link."
+msgstr ""
+"Veuillez sélectionner votre type de rafraîchissement pour le lien de "
+"téléchargement."
+
+#: classes/ed-register.php:179
+msgctxt "ed-download-script"
+msgid "Please enter expiration date for this download URL. YYYY-MM-DD."
+msgstr ""
+"Veuillez entrer une date d'expiration pour cette URL de téléchargement. AAAA-"
+"MM-JJ"
+
+#: classes/ed-register.php:178
+msgctxt "ed-download-script"
+msgid ""
+"Please upload your file to generate download link or enter your download "
+"link."
+msgstr ""
+"Veuillez uploader votre fichier afin de générer un lien de téléchargement ou "
+"entrer votre lien de téléchargement."
+
+#: classes/ed-register.php:177
+msgctxt "ed-download-script"
+msgid "Please enter title for your download link."
+msgstr "Veuillez entrer un titre pour votre lien de téléchargement."
+
+#: classes/ed-register.php:176 classes/ed-register.php:204
+msgctxt "ed-download-script"
+msgid "Do you want to delete this record?"
+msgstr "Voulez-vous supprimer cet enregistrement ?"
+
+#: base/ed-defined.php:22
+msgid "Please select your downloads."
+msgstr "Veuillez sélectionner vos téléchargements."
+
+#: base/ed-defined.php:21
+msgid "color: #00CC00;"
+msgstr "couleur: #00CC00;"
+
+#: base/ed-defined.php:20
+msgid "color: #FF3300;"
+msgstr "couleur: #FF3300;"
+
+#: subscribers/subscribers-downloads.php:130
+#: subscribers/subscribers-show.php:134 subscribers/subscribers-email.php:129
+#: downloads/downloads-show.php:146
+msgid "&raquo;"
+msgstr "&raquo;"
+
+#: subscribers/subscribers-downloads.php:129
+#: subscribers/subscribers-show.php:133 subscribers/subscribers-email.php:128
+#: downloads/downloads-show.php:145
+msgid "&laquo;"
+msgstr "&laquo;"
+
+#: subscribers/subscribers-export.php:40
+msgid "Export all email address with download details."
+msgstr "Exporter toutes les adresses mail avec les détails de téléchargement."
+
+#: subscribers/subscribers-export.php:36 subscribers/subscribers-export.php:42
+msgid "Click to export csv"
+msgstr "Cliquez pour exporter le CSV"
+
+#: subscribers/subscribers-export.php:34
+msgid "Export unique email address."
+msgstr "Exporter une unique adresse mail."
+
+#: subscribers/subscribers-export.php:19 subscribers/subscribers-export.php:27
+msgid "Total email"
+msgstr "Total email"
+
+#: subscribers/subscribers-export.php:18 subscribers/subscribers-export.php:26
+msgid "Export option"
+msgstr "Option d’exportation "
+
+#: subscribers/subscribers-export.php:17 subscribers/subscribers-export.php:25
+msgid "Sno"
+msgstr "Sno"
+
+#: subscribers/subscribers-export.php:12
+msgid "Export email address in csv format"
+msgstr "Exporter l'adresse mail en format CSV"
+
+#: job/ed-export.php:37
+msgid "Unexpected url submit has been detected. Request is not posted."
+msgstr ""
+"Une soumission d'URL inattendue à été détectée. La requête n'a pas été "
+"postée."
+
+#: job/ed-export.php:32
+msgid "Unexpected url submit has been detected. Same URL is not detected."
+msgstr ""
+"Une soumission d'URL inattendue à été détectée. La même URL n'est pas "
+"détectée."
+
+#: job/ed-export.php:26
+msgid "Unexpected url submit has been detected"
+msgstr "Une soumission d'URL inattendue à été détectée"
+
+#: subscribers/subscribers-downloads.php:146
+#: subscribers/subscribers-show.php:150 subscribers/subscribers-email.php:145
+#: subscribers/subscribers-export.php:50 downloads/downloads-show.php:162
+msgid "Export Emails"
+msgstr "Exporter les adresses mail"
+
+#. Author of the plugin
+msgid "Gopi Ramasamy"
+msgstr "Gopi Ramasamy"
+
+#. Description of the plugin
+msgid ""
+"This plugin will send a download link to user after they have submitted a "
+"form. i.e. Send email with download link to users after signing up. There "
+"are lots of reasons you might want to send to a download link to your user "
+"after they have submitted a form."
+msgstr ""
+"Ce plug-in enverra un lien de téléchargement à l'utilisateur après qu'il ait "
+"soumis un formulaire. Ex. : Envoyez un email avec un lien de téléchargement "
+"après inscription. Il y a de nombreuses raisons pour que vous vouliez "
+"envoyer un lien de téléchargement à votre utilisateur après qu'il ait soumis "
+"un formulaire."
+
+#. Plugin URI of the plugin
+#. Author URI of the plugin
+msgid ""
+"http://www.gopiplus.com/work/2016/03/01/email-download-link-wordpress-plugin/"
+msgstr ""
+"http://www.gopiplus.com/work/2016/03/01/email-download-link-wordpress-plugin/"
+
+#: subscribers/subscribers-show.php:50
+msgid "Download History (Full List)"
+msgstr "Télécharger l'historique (liste complète)"
+
+#: subscribers/subscribers-email.php:44
+msgid "Download History (By Email)"
+msgstr "Télécharger l'historique (par email)"
+
+#: subscribers/subscribers-downloads.php:74
+msgid "Downloads "
+msgstr "Téléchargements"
+
+#: subscribers/subscribers-downloads.php:64
+#: subscribers/subscribers-downloads.php:75
+#: subscribers/subscribers-show.php:68 subscribers/subscribers-show.php:78
+#: subscribers/subscribers-email.php:63 subscribers/subscribers-email.php:74
+#: subscribers/subscribers-export.php:20 subscribers/subscribers-export.php:28
+msgid "Action"
+msgstr "Action"
+
+#: subscribers/subscribers-downloads.php:62
+#: subscribers/subscribers-downloads.php:73
+#: subscribers/subscribers-show.php:66 subscribers/subscribers-show.php:76
+#: subscribers/subscribers-email.php:61 subscribers/subscribers-email.php:72
+msgid "Download Title"
+msgstr "Titre du téléchargement"
+
+#: subscribers/subscribers-downloads.php:61
+#: subscribers/subscribers-downloads.php:72
+#: subscribers/subscribers-show.php:65 subscribers/subscribers-show.php:75
+#: subscribers/subscribers-email.php:60 subscribers/subscribers-email.php:71
+msgid "Downloaded"
+msgstr "Téléchargé"
+
+#: subscribers/subscribers-downloads.php:59
+#: subscribers/subscribers-downloads.php:70
+#: subscribers/subscribers-show.php:63 subscribers/subscribers-show.php:73
+#: subscribers/subscribers-email.php:58 subscribers/subscribers-email.php:69
+msgid "Email"
+msgstr "Email"
+
+#: subscribers/subscribers-downloads.php:45
+msgid "Download History (By Download URL)"
+msgstr "Télécharger l'historique (par URL de téléchargement)"
+
+#: settings/settings-edit.php:323
+msgid "Save Settings"
+msgstr "Sauvegarder les paramètres"
+
+#: settings/settings-edit.php:263
+msgid "Enter the content to display if download link is invalid."
+msgstr "Entrez le contenu à afficher si le lien de téléchargement est invalide"
+
+#: settings/settings-edit.php:262
+msgid "Invalid link content"
+msgstr "Contenu du lien invalide"
+
+#: settings/settings-edit.php:256
+msgid "Enter the content to display if download link has expired."
+msgstr "Entrez le contenu à afficher si le lien de téléchargement a expiré"
+
+#: settings/settings-edit.php:255
+msgid "Expired link content"
+msgstr "Contenu du lien expiré"
+
+#: settings/settings-edit.php:247
+msgid ""
+"Enter the mail content for admin. This will send whenever new download email "
+"sent to requester."
+msgstr ""
+"Entrez le contenu du mail pour l'admin. Cela sera envoyé à chaque fois qu'un "
+"mail de téléchargement est envoyé à un utilisateur."
+
+#: settings/settings-edit.php:240
+msgid ""
+"Enter the subject for admin mail. This will send whenever new download email "
+"sent to requester."
+msgstr ""
+"Entrez le sujet du mail pour l'admin. Cela sera envoyé à chaque fois qu'un "
+"mail de téléchargement est envoyé à un utilisateur."
+
+#: settings/settings-edit.php:239
+msgid "Admin mail subject"
+msgstr "Sujet du mail de l'admin"
+
+#: settings/settings-edit.php:233
+msgid ""
+"Enter the admin email addresses that should receive notifications (separate "
+"by comma)."
+msgstr ""
+"Entrez les adresses mail des admins qui pourront recevoir les notifications "
+"(séparés par un tiret)."
+
+#: settings/settings-edit.php:232
+msgid "Admin email addresses"
+msgstr "Adresses mail des admins"
+
+#: settings/settings-edit.php:221
+msgid ""
+"To send admin notifications for new download email, This option must be set "
+"to YES."
+msgstr ""
+"Pour envoyer des notifications aux admins pour chaque mail de "
+"téléchargement, cette option doit-être réglée à OUI."
+
+#: settings/settings-edit.php:220
+msgid "Mail to admin"
+msgstr "Mail aux admins"
+
+#: settings/settings-edit.php:211
+msgid ""
+"Enter the mail content for download link mail. This will send whenever user "
+"is requested download link."
+msgstr ""
+"Entrez le contenu du mail pour le mail du lien de téléchargement. Cela sera "
+"envoyé à chaque fois qu'un utilisateur poste un requête de téléchargement."
+
+#: settings/settings-edit.php:210
+msgid "Download link mail content"
+msgstr "Contenu du mail de lien de téléchargement"
+
+#: settings/settings-edit.php:203
+msgid ""
+"Enter the mail subject for download link mail. This will send whenever user "
+"is requested download link."
+msgstr ""
+"Entrez le sujetdu mail pour le mail du lien de téléchargement. Cela sera "
+"envoyé à chaque fois qu'un utilisateur poste un requête de téléchargement."
+
+#: settings/settings-edit.php:202
+msgid "Download link mail subject"
+msgstr "Sujet du mail du mail de téléchargement"
+
+#: settings/settings-edit.php:188
+msgid ""
+"Option 1 & 2 is to send mails with default Wordpress method wp_mail(). "
+"Option 3 & 4 is to send mails with PHP method mail()"
+msgstr ""
+"Les options 1 & 2 servent à envoyer des mails avec la méthode par défaut de "
+"Wordpress wp_mail(). Les options 3 & 4 servent à envoyer les mails avec la "
+"méthode PHP mail()."
+
+#: settings/settings-edit.php:187
+msgid "Mail type"
+msgstr "Type de mail"
+
+#: settings/settings-edit.php:178
+msgid ""
+"Choose a FROM name and FROM email address for all emails from this plugin."
+msgstr ""
+"Choisissez un nom FROM et une adresse mail FROM pour tout les emails de ce "
+"plugin."
+
+#: settings/settings-edit.php:177
+msgid "Sender of notifications"
+msgstr "Profil envoyant les notifications"
+
+#: settings/settings-edit.php:119
+msgid "Please enter sender of notifications from email."
+msgstr "Veuillez entrer l'adresse mail qui enverra les notifications."
+
+#: settings/settings-edit.php:113
+msgid "Please enter sender of notifications from name."
+msgstr "Veuillez entrer le nom du compte qui enverra les notifications."
+
+#: job/ed-download.php:78
+msgid "Your download should automatically begin in a few seconds."
+msgstr "Votre téléchargement devrait commencer dans quelques secondes."
+
+#: subscribers/subscribers-downloads.php:145
+#: subscribers/subscribers-show.php:149 subscribers/subscribers-email.php:144
+#: subscribers/subscribers-export.php:49 downloads/downloads-view.php:92
+msgid "Back"
+msgstr "Retour"
+
+#: downloads/downloads-view.php:86
+msgid "Guid Code"
+msgstr "Code guide"
+
+#: downloads/downloads-view.php:78
+msgid "Download Id"
+msgstr "Id de téléchargement"
+
+#: downloads/downloads-view.php:74
+msgid "Status"
+msgstr "Statut"
+
+#: downloads/downloads-view.php:58
+msgid "Total Downloads"
+msgstr "Total des téléchargements"
+
+#: downloads/downloads-view.php:54
+msgid "Download absolute path"
+msgstr "Télécharger le chemin absolu"
+
+#: downloads/downloads-view.php:46
+msgid "Description"
+msgstr "Description"
+
+#: downloads/downloads-view.php:39
+msgid "View download link"
+msgstr "Voir le lien de téléchargement"
+
+#: subscribers/subscribers-downloads.php:112
+#: subscribers/subscribers-show.php:116 subscribers/subscribers-email.php:111
+#: downloads/downloads-show.php:128
+msgid "No records available"
+msgstr "Aucun enregistrement disponible"
+
+#: downloads/downloads-show.php:102
+msgid "Delete"
+msgstr "Supprimer"
+
+#: downloads/downloads-show.php:99
+msgid "Edit"
+msgstr "Modifier"
+
+#: downloads/downloads-view.php:70
+msgid "Expiration Date"
+msgstr "Date d'expiration"
+
+#: downloads/downloads-view.php:62
+msgid "Expiration Type"
+msgstr "Type d'expiration"
+
+#: downloads/downloads-view.php:82
+msgid "Short Code"
+msgstr "Short Code"
+
+#: downloads/downloads-show.php:49 downloads/downloads-show.php:161
+msgid "Add New"
+msgstr "Ajouter"
+
+#: downloads/downloads-show.php:48
+msgid "Download links"
+msgstr "Liens de téléchargement"
+
+#: subscribers/subscribers-downloads.php:29
+#: subscribers/subscribers-show.php:34 subscribers/subscribers-email.php:28
+#: downloads/downloads-show.php:32
+msgid "Selected record was successfully deleted."
+msgstr "L'enregistrement sélectionné a bien été supprimé."
+
+#: subscribers/subscribers-downloads.php:20
+#: subscribers/subscribers-show.php:24 subscribers/subscribers-email.php:19
+#: downloads/downloads-show.php:23
+msgid "Oops, selected details doesnt exist"
+msgstr "Oups, les détails sélectionnés n'existent pas"
+
+#: downloads/downloads-edit.php:144
+msgid "Edit download link"
+msgstr "Éditer le lien de téléchargement"
+
+#: downloads/downloads-edit.php:88
+msgid "Download link was successfully updated."
+msgstr "Le lien de téléchargement a bien été mis à jour."
+
+#: downloads/downloads-edit.php:65
+msgid "Please enter valid download URL."
+msgstr "Veuillez entrer une URL de téléchargement valide."
+
+#: downloads/downloads-add.php:186 downloads/downloads-edit.php:190
+msgid "Please select your refresh type for the download link."
+msgstr ""
+"Veuillez sélectionner votre type de rafraîchissement pour le lien de "
+"téléchargement."
+
+#: downloads/downloads-add.php:181 downloads/downloads-edit.php:185
+msgid "URL refresh"
+msgstr "Rafraîchir l'URL"
+
+#: downloads/downloads-add.php:179 downloads/downloads-edit.php:183
+msgid "Please enter expiration date for this download URL. YYYY-MM-DD."
+msgstr ""
+"Veuillez entrer la date d'expiration pour cette URL de téléchargement. AAAA-"
+"MM-DD"
+
+#: downloads/downloads-add.php:177 downloads/downloads-edit.php:181
+msgid "Expiration date"
+msgstr "Date d'expiration"
+
+#: downloads/downloads-add.php:157 downloads/downloads-edit.php:153
+msgid "Please enter title for your download link."
+msgstr "Veuillez entrer un titre pour votre lien de téléchargement."
+
+#: downloads/downloads-add.php:155 downloads/downloads-view.php:42
+#: downloads/downloads-edit.php:151 downloads/downloads-show.php:63
+#: downloads/downloads-show.php:74
+msgid "Title"
+msgstr "Titre&nbsp;:"
+
+#: downloads/downloads-add.php:153 downloads/downloads-edit.php:149
+msgid ""
+"Please upload your file to generate download link or enter your download "
+"link."
+msgstr ""
+"Veuillez uploader votre fichier afin de générer un lien de téléchargement ou "
+"entrer votre lien de téléchargement."
+
+#: downloads/downloads-add.php:150 downloads/downloads-view.php:50
+#: downloads/downloads-edit.php:146
+msgid "Download link"
+msgstr "Lien de téléchargement"
+
+#: downloads/downloads-add.php:148
+msgid "Add download link"
+msgstr "Ajouter un lien de téléchargement"
+
+#: settings/settings-edit.php:156 downloads/downloads-add.php:114
+#: downloads/downloads-edit.php:110
+msgid " to view the details"
+msgstr "pour voir les détails"
+
+#: settings/settings-edit.php:155 downloads/downloads-add.php:113
+#: downloads/downloads-edit.php:109
+msgid "Click here"
+msgstr "Cliquez ici"
+
+#: downloads/downloads-add.php:84 downloads/downloads-edit.php:92
+msgid "Failed to create record. Please contact plugin admin."
+msgstr ""
+"Création de l'enregistrement échoué. Veuillez contacter l'admin du plugin."
+
+#: downloads/downloads-add.php:80
+msgid "Download link was successfully created."
+msgstr "Le lien de téléchargement à été créé avec succès."
+
+#: downloads/downloads-add.php:69 downloads/downloads-edit.php:77
+msgid "Please enter valid expiration date."
+msgstr "Veuillez entrer une date d'expiration valide."
+
+#: downloads/downloads-add.php:63 downloads/downloads-edit.php:71
+msgid "Please select valid expiration type."
+msgstr "Veuillez sélectionner une date d'expiration valide."
+
+#: downloads/downloads-add.php:52
+msgid "Please enter download URL."
+msgstr "Veuillez entrer une URL de téléchargement."
+
+#: downloads/downloads-add.php:46 downloads/downloads-edit.php:59
+msgid "Please enter download title."
+msgstr "Veuillez entrer un titre de téléchargement."
+
+#: recaptcha/recaptcha-add.php:109 cron/cron-add.php:155
+#: settings/settings-edit.php:325 subscribers/subscribers-downloads.php:147
+#: subscribers/subscribers-show.php:151 subscribers/subscribers-email.php:146
+#: subscribers/subscribers-export.php:51 downloads/downloads-add.php:192
+#: downloads/downloads-view.php:93 downloads/downloads-edit.php:198
+#: downloads/downloads-show.php:163
+msgid "Help"
+msgstr "Aide"
+
+#: recaptcha/recaptcha-add.php:108 cron/cron-add.php:154
+#: settings/settings-edit.php:324 downloads/downloads-add.php:191
+#: downloads/downloads-edit.php:197
+msgid "Cancel"
+msgstr "Annulez"
+
+#: recaptcha/recaptcha-add.php:107 cron/cron-add.php:153
+#: downloads/downloads-add.php:190 downloads/downloads-edit.php:196
+msgid "Submit"
+msgstr "Soumettre"
+
+#: cron/cron-add.php:148
+msgid ""
+"Enter the mail content for admin. This will send whenever cron URL is "
+"triggered."
+msgstr ""
+"Entrez le contenu du mail pour l'admin. Cela sera envoyé à chaque fois "
+"qu'une URL Cron sera déclenchée."
+
+#: cron/cron-add.php:146 settings/settings-edit.php:246
+msgid "Admin mail content"
+msgstr "Contenu du mail d'admin"
+
+#: cron/cron-add.php:144
+msgid ""
+"Please find your cron job URL. This is read only field not able to modify "
+"from admin."
+msgstr ""
+"Veuillez trouver votre URL Cron job. Ce champ est en lecture seule et ne "
+"peut être modifié par l'admin."
+
+#: cron/cron-add.php:142
+msgid "Cron job URL"
+msgstr "Cron job URL"
+
+#: cron/cron-add.php:99 settings/settings-edit.php:135
+msgid "Oops, details not update."
+msgstr "Oups, les détails n'ont pas été mis à jour."
+
+#: cron/cron-add.php:94 settings/settings-edit.php:130
+msgid "Details was successfully updated."
+msgstr "Les détails ont été mis à jour avec succès."
+
+#: cron/cron-add.php:23 settings/settings-edit.php:23
+#: downloads/downloads-view.php:10 downloads/downloads-edit.php:10
+msgid "Oops, selected details doesnt exist."
+msgstr "Oups, les détails sélectionnés n'existent pas."
+
+#: classes/ed-register.php:673
+msgid "Select download link for this form."
+msgstr "Sélectionnez un lien de téléchargement pour ce formulaire."
+
+#: classes/ed-register.php:659
+msgid "Display NAME box"
+msgstr "Afficher la box NOM"
+
+#: classes/ed-register.php:655
+msgid "Short description for your download form."
+msgstr "Courte description pour votre formulaire de téléchargement."
+
+#: classes/ed-register.php:651
+msgid "Widget title"
+msgstr "Titre du widget"
+
+#: classes/ed-register.php:550
+msgid "Send Download Link"
+msgstr "Envoyer le lien"
+
+#: classes/ed-register.php:503 classes/ed-shortcode.php:107
+msgid "Email *"
+msgstr "Adresse mail *"
+
+#: subscribers/subscribers-downloads.php:60
+#: subscribers/subscribers-downloads.php:71
+#: subscribers/subscribers-show.php:64 subscribers/subscribers-show.php:74
+#: subscribers/subscribers-email.php:59 subscribers/subscribers-email.php:70
+#: classes/ed-register.php:489 classes/ed-shortcode.php:93
+msgid "Name"
+msgstr "Nom"
+
+#: settings/settings-edit.php:171 classes/ed-register.php:128
+msgid "Settings"
+msgstr "R&eacute;glages"
+
+#: cron/cron-add.php:121 classes/ed-register.php:125
+msgid "Cron Details"
+msgstr "Détails du Cron"
+
+#: subscribers/subscribers-downloads.php:63
+#: subscribers/subscribers-show.php:67 subscribers/subscribers-show.php:77
+#: subscribers/subscribers-email.php:62 subscribers/subscribers-email.php:73
+#: downloads/downloads-show.php:66 downloads/downloads-show.php:77
+#: downloads/downloads-show.php:105 classes/ed-register.php:122
+msgid "Downloads"
+msgstr "Téléchargements"
+
+#: classes/ed-register.php:119
+msgid "Download Link"
+msgstr "Lien de téléchargement"
+
+#. Plugin Name of the plugin
+#: classes/ed-register.php:118 classes/ed-register.php:121
+#: classes/ed-register.php:124 classes/ed-register.php:127
+#: classes/ed-register.php:130 classes/ed-register.php:133
+msgid "Email download link"
+msgstr "Adresse mail de lien de téléchargement"
+
+#: base/ed-defined.php:19
+msgid "Download link sent successfully to your email address."
+msgstr ""
+"Le lien de téléchargement à été envoyé à votre adresse mail avec succès."
+
+#: base/ed-defined.php:18
+msgid ""
+"Validation errors occurred. Please confirm the fields and submit it again."
+msgstr ""
+"Des erreurs de validation se sont produites. Veuillez confirmer les champs "
+"et les soumettre à nouveau."
+
+#: base/ed-defined.php:17
+msgid "Email address seems invalid."
+msgstr "L'adresse mail à l'air invalide."
+
+#: base/ed-defined.php:16
+msgid "Please fill in the required field."
+msgstr "Veuillez remplir les champs requis."

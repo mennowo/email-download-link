@@ -41,7 +41,7 @@ class ed_cls_downloads
 		else
 		{
 			$arrRes = $wpdb->get_results($sSql, ARRAY_A);
-		}		
+		}
 		return $arrRes;
 	}
 	

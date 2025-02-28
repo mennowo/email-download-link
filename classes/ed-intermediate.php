@@ -17,6 +17,9 @@ class ed_cls_intermediate
 			case 'view':
 				require_once(ED_DIR.'downloads'.DIRECTORY_SEPARATOR.'downloads-view.php');
 				break;
+			case 'details':
+				require_once(ED_DIR.'downloads'.DIRECTORY_SEPARATOR.'downloads-view.php');
+				break;
 			default:
 				require_once(ED_DIR.'downloads'.DIRECTORY_SEPARATOR.'downloads-show.php');
 				break;
@@ -36,7 +39,7 @@ class ed_cls_intermediate
 				require_once(ED_DIR.'settings'.DIRECTORY_SEPARATOR.'settings-sync.php');
 				break;
 			default:
-				require_once(ED_DIR.'settings'.DIRECTORY_SEPARATOR.'settings-edit.php');
+				require_once(ED_DIR.'settings'.DIRECTORY_SEPARATOR.'settings.php');
 				break;
 		}
 	}
@@ -88,6 +91,21 @@ class ed_cls_intermediate
 				break;
 			default:
 				require_once(ED_DIR.'recaptcha'.DIRECTORY_SEPARATOR.'recaptcha-add.php');
+				break;
+		}
+	}
+	
+	public static function ed_security()
+	{
+		global $wpdb;
+		$current_page = isset($_GET['ac']) ? $_GET['ac'] : '';
+		switch($current_page)
+		{
+			case 'add':
+				require_once(ED_DIR.'security'.DIRECTORY_SEPARATOR.'security.php');
+				break;
+			default:
+				require_once(ED_DIR.'security'.DIRECTORY_SEPARATOR.'security.php');
 				break;
 		}
 	}

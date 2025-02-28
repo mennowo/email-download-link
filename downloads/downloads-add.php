@@ -166,7 +166,7 @@ wp_enqueue_media(); // This will enqueue the Media Uploader script
 			{
 				foreach ($groups as $group)
 				{
-					?><option value='<?php echo $group['ed_form_group']; ?>'><?php echo esc_html(stripslashes($group['ed_form_group'])); ?></option><?php
+					?><option value='<?php echo esc_html($group['ed_form_group']); ?>'><?php echo esc_html(stripslashes($group['ed_form_group'])); ?></option><?php
 				}
 			}
 			?>
@@ -187,12 +187,11 @@ wp_enqueue_media(); // This will enqueue the Media Uploader script
 	  
 		<input type="hidden" name="ed_form_submit" value="yes"/>
 		<p class="submit">
-		<input name="publish" lang="publish" class="button add-new-h2" value="<?php _e('Submit', 'email-download-link'); ?>" type="submit" />
-		<input name="publish" lang="publish" class="button add-new-h2" onclick="_ed_redirect()" value="<?php _e('Cancel', 'email-download-link'); ?>" type="button" />
-		<input name="Help" lang="publish" class="button add-new-h2" onclick="_ed_help()" value="<?php _e('Help', 'email-download-link'); ?>" type="button" />
+		<input name="publish" lang="publish" class="button button-primary" value="<?php _e('Submit', 'email-download-link'); ?>" type="submit" />
+		<input name="publish" lang="publish" class="button button-primary" onclick="_ed_redirect()" value="<?php _e('Cancel', 'email-download-link'); ?>" type="button" />
+		<input name="Help" lang="publish" class="button button-primary" onclick="_ed_help()" value="<?php _e('Help', 'email-download-link'); ?>" type="button" />
 		</p>
 		<?php wp_nonce_field('ed_form_add'); ?>
 	</form>
 </div>
-<p class="description"><?php echo ED_OFFICIAL; ?></p>
 </div>

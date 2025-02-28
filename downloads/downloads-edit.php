@@ -144,12 +144,12 @@ wp_enqueue_media(); // This will enqueue the Media Uploader script
 	<h3><?php _e('Edit download link', 'email-download-link'); ?></h3>
 	<form name="ed_form" method="post" action="#" onsubmit="return _ed_downloads_submit()"  >
 		<label for="tag"><?php _e('Download link', 'email-download-link'); ?></label>
-		<input type="text" name="ed_form_downloadurl" id="ed_form_downloadurl" value="<?php echo $form['ed_form_downloadurl']; ?>"  size="50">
+		<input type="text" name="ed_form_downloadurl" id="ed_form_downloadurl" value="<?php echo esc_html($form['ed_form_downloadurl']); ?>"  size="50">
 		<input type="button" name="upload-btn" id="upload-btn" class="button-secondary" value="Upload File">
 		<p><?php _e('Please upload your file to generate download link or enter your download link.', 'email-download-link'); ?></p>
 		
 		<label for="tag"><?php _e('Title', 'email-download-link'); ?></label>
-		<input name="ed_form_title" type="text" id="ed_form_title" value="<?php echo $form['ed_form_title']; ?>" maxlength="225" size="50"  />
+		<input name="ed_form_title" type="text" id="ed_form_title" value="<?php echo esc_html($form['ed_form_title']); ?>" maxlength="225" size="50"  />
 		<p><?php _e('Please enter title for your download link.', 'email-download-link'); ?></p>
 		
 		<label for="tag"><?php _e('Group', 'email-download-link'); ?></label>
@@ -179,7 +179,7 @@ wp_enqueue_media(); // This will enqueue the Media Uploader script
 		<p><?php _e('Please select or enter your group name for this download link.', 'email-download-link'); ?></p>
 		
 		<label for="tag"><?php _e('Expiration date', 'email-download-link'); ?></label>
-		<input name="ed_form_expirationdate" type="text" id="ed_form_expirationdate" value="<?php echo $form['ed_form_expirationdate']; ?>" maxlength="10"  />
+		<input name="ed_form_expirationdate" type="text" id="ed_form_expirationdate" value="<?php echo esc_html($form['ed_form_expirationdate']); ?>" maxlength="10"  />
 		<p><?php _e('Please enter expiration date for this download URL. YYYY-MM-DD.', 'email-download-link'); ?></p>
 		
 		<label for="tag"><?php _e('URL refresh', 'email-download-link'); ?></label>
@@ -193,12 +193,11 @@ wp_enqueue_media(); // This will enqueue the Media Uploader script
 	  	<input type="hidden" name="ed_form_id" id="ed_form_id" value="<?php echo $form['ed_form_id']; ?>"/>
 		<input type="hidden" name="ed_form_guid" id="ed_form_guid" value="<?php echo $form['ed_form_guid']; ?>"/>
 		<p class="submit">
-		<input name="publish" lang="publish" class="button add-new-h2" value="<?php _e('Submit', 'email-download-link'); ?>" type="submit" />
-		<input name="publish" lang="publish" class="button add-new-h2" onclick="_ed_redirect()" value="<?php _e('Cancel', 'email-download-link'); ?>" type="button" />
-		<input name="Help" lang="publish" class="button add-new-h2" onclick="_ed_help()" value="<?php _e('Help', 'email-download-link'); ?>" type="button" />
+		<input name="publish" lang="publish" class="button button-primary" value="<?php _e('Submit', 'email-download-link'); ?>" type="submit" />
+		<input name="publish" lang="publish" class="button button-primary" onclick="_ed_redirect()" value="<?php _e('Cancel', 'email-download-link'); ?>" type="button" />
+		<input name="Help" lang="publish" class="button button-primary" onclick="_ed_help()" value="<?php _e('Help', 'email-download-link'); ?>" type="button" />
 		</p>
 		<?php wp_nonce_field('ed_form_edit'); ?>
 	</form>
 </div>
-<p class="description"><?php echo ED_OFFICIAL; ?></p>
 </div>

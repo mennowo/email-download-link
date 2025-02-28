@@ -26,11 +26,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<div id="icon-plugins" class="icon32"></div>
 		<h2><?php echo __( ED_PLUGIN_DISPLAY, 'email-download-link' ); ?></h2>
 		<form name="form_sync" id="form_sync" method="post" action="#" >
-			<h3 class="title"><?php echo __( 'Sync plugin tables', 'email-download-link' ); ?></h3>
+			<h3 class="title"><?php _e( 'Database Update Required', 'email-download-link' ); ?></h3>
 			<input type="hidden" name="ed_form_submit" value="yes"/>
 			<div style="padding-top:5px;"></div>
+	  		<div>Plugin has been updated! Before we send you on your way, we have to update your plugin table to the newest version.</div>
+	  		<div style="padding-top:20px;"></div>
+	  		<div>The database update process may take a little while, so please be patient.</div>
+	  		<div style="padding-top:20px;"></div>
 			<p>
-				<input type="submit" name="publish" lang="publish" class="button-primary" value="<?php echo __( 'Click to sync tables', 'email-download-link' ); ?>" />
+				<input type="submit" name="publish" lang="publish" class="button-primary" value="<?php echo __( 'Update plugin table', 'email-download-link' ); ?>" />
 			</p>
 			<?php wp_nonce_field('ed_form_sync'); ?>
 		</form>

@@ -1,16 +1,7 @@
 <?php if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) { die('You are not allowed to call this page directly.'); } ?>
 <?php if ( ! empty( $_POST ) && ! wp_verify_nonce( $_REQUEST['wp_create_nonce'], 'downloads-nonce' ) )  { die('<p>Security check failed.</p>'); } ?>
+<?php ed_cls_common::ed_check_latest_update(); ?>
 <?php
-$ed_email_download_link_ver = get_option('email-download-link');
-if ( $ed_email_download_link_ver != "1.6.1" ) {
-	?><div class="error fade">
-		<p>
-		Note: You have recently upgraded the plugin and your tables are not sync.
-		Please <a title="Sync plugin tables." href="<?php echo ED_ADMINURL; ?>?page=ed-settings&amp;ac=sync"><?php echo __( 'Click Here', 'email-download-link' ); ?></a> to sync the table.
-		This is mandatory and it will not affect your data.
-		</p>
-	</div><?php
-}
 
 if (isset($_POST['frm_ed_display']) && $_POST['frm_ed_display'] == 'yes')
 {
@@ -90,7 +81,7 @@ if (isset($_POST['frm_ed_display']) && $_POST['frm_ed_display'] == 'yes')
 			{					
 				?>
 				<tr class="<?php if ($i&1) { echo'alternate'; } else { echo ''; }?>">
-				<td><?php echo $data['ed_form_title']; ?>
+				<td><?php echo esc_html($data['ed_form_title']); ?>
 				<div class="row-actions">
 					<span class="edit">
 					<a title="View Details" href="<?php echo ED_ADMINURL; ?>?page=ed-downloads&amp;ac=view&amp;guid=<?php echo $data['ed_form_guid']; ?>"><?php _e('View', 'email-download-link'); ?></a> 
@@ -109,13 +100,11 @@ if (isset($_POST['frm_ed_display']) && $_POST['frm_ed_display'] == 'yes')
 				<td align="left">
 				<a target="_blank" href="<?php echo stripslashes($data['ed_form_downloadurl']); ?>"><img src="<?php echo ED_URL; ?>images/download.png" alt="Download URL" /></a>
 				</td>
-				<td align="left">
-				[email-download-link namefield="YES" id="<?php echo $data['ed_form_id']; ?>"]<br />
-				[email-download-link namefield="YES" group="<?php echo $data['ed_form_group']; ?>"]</td>
-				<td align="left"><?php echo $data['ed_form_downloadcount']; ?></td>
-				<td align="left"><?php echo $data['ed_form_group']; ?></td>
-				<td align="left"><?php echo $data['ed_form_expirationtype']; ?></td>
-				<td align="left"><?php echo $data['ed_form_expirationdate']; ?></td>
+				<td align="left">[email-download-link namefield="YES" id="<?php echo $data['ed_form_id']; ?>"]</td>
+				<td align="left"><?php echo esc_html($data['ed_form_downloadcount']); ?></td>
+				<td align="left"><?php echo esc_html($data['ed_form_group']); ?></td>
+				<td align="left"><?php echo esc_html($data['ed_form_expirationtype']); ?></td>
+				<td align="left"><?php echo esc_html($data['ed_form_expirationdate']); ?></td>
 				</tr>
 				<?php
 				$i = $i+1;
@@ -156,11 +145,13 @@ if (isset($_POST['frm_ed_display']) && $_POST['frm_ed_display'] == 'yes')
 	  <input type="hidden" name="wp_create_nonce" id="wp_create_nonce" value="<?php echo wp_create_nonce( 'downloads-nonce' ); ?>"/>
 	  <input type="hidden" name="frm_ed_display" value="yes"/>
 	</form>
+	<div style="height:10px;"></div>
 	<div class="tablenav bottom">
 		<div class="alignleft actions bulkactions">
-			<a href="<?php echo ED_ADMINURL; ?>?page=ed-downloads&amp;ac=add"><input class="button action" type="button" value="<?php _e('Add New', 'email-download-link'); ?>" /></a>
-			<a href="<?php echo ED_ADMINURL; ?>?page=ed-downloadhistory&ac=export"><input class="button action" type="button" value="<?php _e('Export Emails', 'email-download-link'); ?>" /></a>
-			<a href="<?php echo ED_FAV; ?>" target="_blank"><input class="button action" type="button" value="<?php _e('Help', 'email-download-link'); ?>" /></a>
+			<a href="<?php echo ED_ADMINURL; ?>?page=ed-downloads&amp;ac=add"><input class="button button-primary" type="button" value="<?php _e('Add New', 'email-download-link'); ?>" /></a>
+			<a href="<?php echo ED_FAV; ?>" target="_blank"><input class="button button-primary" type="button" value="<?php _e('Short Code', 'email-download-link'); ?>" /></a>
+			<a href="<?php echo ED_FAV; ?>" target="_blank"><input class="button button-primary" type="button" value="<?php _e('Help', 'email-download-link'); ?>" /></a>
+			<a href="<?php echo ED_ADMINURL; ?>?page=ed-downloadhistory&ac=export"><input class="button button-primary" type="button" value="<?php _e('Export Emails', 'email-download-link'); ?>" /></a>
 		</div>
 		<div class="tablenav-pages">
 			<div>
@@ -171,5 +162,4 @@ if (isset($_POST['frm_ed_display']) && $_POST['frm_ed_display'] == 'yes')
 		</div>
 	</div>
   </div>
-  <p class="description"><?php echo ED_OFFICIAL; ?></p>
 </div>

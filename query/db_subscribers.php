@@ -106,9 +106,16 @@ class ed_cls_subscribers
 		}
 		elseif($option == "ed_full_details")
 		{
-			$sSql = "SELECT ed_email_name as Name, ed_email_mail as Email, ed_email_downloaddate as Date,";  
-			$sSql = $sSql . " ed_email_downloadcount as Count, ed_email_downloadstatus as Status,ed_email_downloadid as Downloadid"; 
+			$sSql = "SELECT ed_email_name as Name, ed_email_mail as Email, ed_email_phone as Phone, ed_email_downloaddate as Date,";  
+			$sSql = $sSql . " ed_email_downloadcount as Count, ed_email_downloadstatus as Status "; 
 			$sSql = $sSql . " FROM `".$prefix."ed_emaillist` where ed_email_mail <> '' ";
+		}
+		elseif($option == "ed_full_details_withtitle")
+		{
+			$sSql = "SELECT A.ed_email_name as Name, A.ed_email_mail as Email, A.ed_email_phone as Phone, A.ed_email_downloaddate as Date, ";  
+			$sSql = $sSql . " A.ed_email_downloadcount as Count, A.ed_email_downloadstatus as Status, B.ed_form_id as DownloadID, ";
+			$sSql = $sSql . " B.ed_form_title as DownloadTitle, B.ed_form_group as DownloadGroups "; 
+			$sSql = $sSql . " FROM ".$prefix."ed_emaillist as A LEFT JOIN ".$prefix."ed_downloadform as B ON A.ed_email_downloadid = B.ed_form_downloadid ";
 		}
 		else
 		{
@@ -116,7 +123,12 @@ class ed_cls_subscribers
 			$sSql = $sSql . " FROM `".$prefix."ed_emaillist` where ed_email_mail <> '' ";
 		}
 		
-		$sSql = $sSql . " order by ed_email_downloaddate desc";
+		if($option == "ed_full_details_withtitle") {
+			$sSql = $sSql . " order by B.ed_form_id ";
+		}
+		else {
+			$sSql = $sSql . " order by ed_email_downloaddate desc";
+		}
 		
 		$arrRes = $wpdb->get_results($sSql, ARRAY_A);
 		return $arrRes;
@@ -140,17 +152,29 @@ class ed_cls_subscribers
 		return true;
 	}
 	
-	public static function ed_subscriber_create($ed_txt_nm = "", $ed_txt_em = "", $ed_email_form_guid = "")
+	public static function ed_subscriber_create($ed_txt_nm = "", $ed_txt_em = "", $ed_email_form_guid = "", $ed_txt_ph = "")
 	{
 		global $wpdb;
 		$prefix = $wpdb->prefix;
 		$count = '0';
 		
+		$blocked = ed_cls_filter::ed_filter_blocked($ed_txt_nm, $ed_txt_em);
+		if($blocked) {
+			return "blocked";
+		}
+		
+		$blocked = ed_cls_filter::ed_filter_badword($ed_txt_nm, $ed_txt_em, $ed_txt_ph);
+		if($blocked) {
+			return "badword";
+		}
+		
 		//Select downloadid
 		$downloads = array();
 		$downloads = ed_cls_downloads::ed_downloads_form_guid($ed_email_form_guid);
 		$ed_email_downloadid = $downloads['ed_form_downloadid'];
-				
+		
+		$ip = ed_cls_common::ed_get_subscriber_ip();
+		
 		$returnvalue = "";
 		$currentdate = date('Y-m-d G:i:s'); 
 		$sSql = $wpdb->prepare("SELECT COUNT(*) AS `count` FROM `".$prefix."ed_emaillist` WHERE `ed_email_mail` = %s and ed_email_downloadid = %s", array($ed_txt_em, $ed_email_downloadid));
@@ -169,8 +193,8 @@ class ed_cls_subscribers
 			$ed_email_guid = ed_cls_common::ed_generate_guid();
 			$sSql = $wpdb->prepare("INSERT INTO `".$prefix."ed_emaillist` (`ed_email_guid`, 
 			`ed_email_name`, `ed_email_mail`, `ed_email_downloaddate`, `ed_email_downloadcount`, 
-			`ed_email_downloadstatus`, `ed_email_downloadid`, `ed_email_form_guid`) VALUES(%s, %s, %s, %s, %d, %s, %s, %s)", 
-			array($ed_email_guid, $ed_txt_nm, $ed_txt_em, $currentdate, 1, "Pending", $ed_email_downloadid, $ed_email_form_guid ));
+			`ed_email_downloadstatus`, `ed_email_downloadid`, `ed_email_form_guid`, `ed_email_ip`, `ed_email_phone`) VALUES(%s, %s, %s, %s, %d, %s, %s, %s, %s, %s)", 
+			array($ed_email_guid, $ed_txt_nm, $ed_txt_em, $currentdate, 0, "Pending", $ed_email_downloadid, $ed_email_form_guid, $ip, $ed_txt_ph ));
 			$wpdb->query($sSql);
 			$returnvalue = "suss";
 		}
@@ -220,7 +244,7 @@ class ed_cls_subscribers
 		$sSql = $sSql . " LIMIT 1";
 		$arrRes = $wpdb->get_results($sSql, ARRAY_A);
 		
-		//echo $sSql . "<br><br><br><br>";
+		//echo "<br>" . $sSql . "<br>";
 		
 		if(count($arrRes) > 0)
 		{
@@ -228,6 +252,15 @@ class ed_cls_subscribers
 		}
 		
 		return $returnid;
+	}
+	
+	public static function ed_subscriber_delete_days($days = 0)
+	{
+		global $wpdb;
+		$prefix = $wpdb->prefix;
+		$sSql = $wpdb->prepare("DELETE FROM ".$prefix."ed_emaillist WHERE ed_email_downloaddate < CURRENT_DATE - INTERVAL %d DAY", $days);
+		$wpdb->query($sSql);
+		return true;
 	}
 }
 ?>

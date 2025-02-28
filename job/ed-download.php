@@ -14,6 +14,7 @@ if(isset($_GET['ed']))
 		// Load default settings
 		$data = array();
 		$data = ed_cls_settings::ed_setting_select(1);
+		$ed_c_dowloadlink = isset($data['ed_c_dowloadlink']) ? $data['ed_c_dowloadlink'] : 'NO';
 		
 		// Check errors in the query string
 		if ( $guid == '' )
@@ -42,10 +43,13 @@ if(isset($_GET['ed']))
 				}
 				else
 				{
-					$data = array();
-					$data = ed_cls_downloads::ed_download_link_view(0, $guiddownload);
+					$data_downloadform = array();
+					$data_downloadform = ed_cls_downloads::ed_downloads_downloadid($guiddownload);
+					$ed_form_downloadurl = $data_downloadform['ed_form_downloadurl'];
+
 					$downloadurl = $home_url . "?ed=downloads&guid=".$guid;
 					?>
+					<!DOCTYPE html>
 					<html>
 					<head>
 					<title><?php echo $blogname; ?></title>
@@ -68,8 +72,20 @@ if(isset($_GET['ed']))
 					</script>
 					</head>
 					<body onLoad="countdown()">
-						<?php _e('Your download should automatically begin in a few seconds.', 'email-download-link'); ?>
-						<span style="font-weight:bold;" id="countdown"></span>
+						<?php
+						if($ed_c_dowloadlink == 'YES') {
+							?>
+							<?php _e('Your download should automatically begin in a few seconds.', 'email-download-link'); ?><br>
+							<?php _e('If download not start after ', 'email-download-link'); ?><span style="font-weight:bold;color:#FF0000;" id="countdown"></span> seconds. 
+							<a href="<?php echo $ed_form_downloadurl; ?>">click here</a>
+							<?php
+						}
+						else {
+							?>
+							<?php _e('Your download should automatically begin in a few seconds. ', 'email-download-link'); ?><span style="font-weight:bold;color:#FF0000;" id="countdown"></span>
+							<?php
+						}
+						?>
 					</body>
 					</html>
 					<?php

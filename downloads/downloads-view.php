@@ -40,7 +40,7 @@ else
 	<form name="ed_form" method="post" action="#" onsubmit=""  >
 		
 		<label for="tag"><strong><?php _e('Title', 'email-download-link'); ?> : </strong></label>
-		<p>&nbsp;<?php echo $form['ed_form_title']; ?></p>
+		<p>&nbsp;<?php echo esc_html($form['ed_form_title']); ?></p>
 		<p></p>
 
 		<label for="tag"><strong><?php _e('Description', 'email-download-link'); ?> : </strong></label>
@@ -89,10 +89,9 @@ else
 		
 		<br />
 		<p class="submit">
-		<input name="Back" lang="publish" class="button add-new-h2" onclick="_ed_redirect()" value="<?php _e('Back', 'email-download-link'); ?>" type="button" />
-		<input name="Help" lang="publish" class="button add-new-h2" onclick="_ed_help()" value="<?php _e('Help', 'email-download-link'); ?>" type="button" />
+		<input name="Back" lang="publish" class="button button-primary" onclick="_ed_redirect()" value="<?php _e('Back', 'email-download-link'); ?>" type="button" />
+		<input name="Help" lang="publish" class="button button-primary" onclick="_ed_help()" value="<?php _e('Help', 'email-download-link'); ?>" type="button" />
 		</p>
 	</form>
 </div>
-<p class="description"><?php echo ED_OFFICIAL; ?></p>
 </div>

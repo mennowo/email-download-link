@@ -38,26 +38,16 @@ class ed_cls_settings
 		$sSql = $wpdb->prepare("UPDATE `".$prefix."ed_pluginconfig` SET 
 			`ed_c_fromname` = %s, `ed_c_fromemail` = %s, `ed_c_mailtype` = %s, `ed_c_adminmailoption` = %s, 
 			`ed_c_adminemail` = %s, `ed_c_adminmailsubject` = %s, `ed_c_adminmailcontant` = %s, `ed_c_usermailoption` = %s, 
-			`ed_c_usermailsubject` = %s, `ed_c_usermailcontant` = %s, `ed_c_downloadstart` = %s, `ed_c_downloadpgtxt` = %s
-			, `ed_c_expiredlinkcontant` = %s, `ed_c_invalidlinkcontant` = %s, `ed_c_privacyconditionslink` = %s 
+			`ed_c_usermailsubject` = %s, `ed_c_usermailcontant` = %s, `ed_c_downloadstart` = %s, `ed_c_downloadpgtxt` = %s,
+			`ed_c_expiredlinkcontant` = %s, `ed_c_invalidlinkcontant` = %s, `ed_c_savenameemail` = %s, 
+			`ed_c_successmessage` = %s, `ed_c_deletehistory` = %d, `ed_c_dowloadlink` = %s  
 			 WHERE ed_c_id = %d	LIMIT 1", 
-			array($data["ed_c_fromname"], $data["ed_c_fromemail"], $data["ed_c_mailtype"], $data["ed_c_adminmailoption"],
+			array($data["ed_c_fromname"], $data["ed_c_fromemail"], $data["ed_c_mailtype"], $data["ed_c_adminmailoption"], 
 			$data["ed_c_adminemail"], $data["ed_c_adminmailsubject"], $data["ed_c_adminmailcontant"], $data["ed_c_usermailoption"],
-			$data["ed_c_usermailsubject"], $data["ed_c_usermailcontant"],  $data["ed_c_downloadstart"], $data["ed_c_downloadpgtxt"],
-			$data["ed_c_expiredlinkcontant"],  $data["ed_c_invalidlinkcontant"], $data["ed_c_privacyconditionslink"],
-            $data["ed_c_id"]));
-		$wpdb->query($sSql);
-
-		return "sus";
-	}
-	
-	public static function ed_setting_update2($ed_c_cronmailcontent = "", $ed_c_id = 1, $ed_c_crontype = "NO")
-	{
-		
-		global $wpdb;
-		$prefix = $wpdb->prefix;
-		$sSql = $wpdb->prepare("UPDATE `".$prefix."ed_pluginconfig` SET `ed_c_cronmailcontent` = %s, `ed_c_crontype` = %s WHERE ed_c_id = %d LIMIT 1", 
-		array($ed_c_cronmailcontent, $ed_c_crontype, $ed_c_id ));
+			$data["ed_c_usermailsubject"], $data["ed_c_usermailcontant"],  $data["ed_c_downloadstart"], $data["ed_c_downloadpgtxt"],  
+			$data["ed_c_expiredlinkcontant"],  $data["ed_c_invalidlinkcontant"],  $data["ed_c_savenameemail"],  
+			$data["ed_c_successmessage"],  $data["ed_c_deletehistory"],  $data["ed_c_dowloadlink"],  
+			$data["ed_c_id"]));
 		$wpdb->query($sSql);
 		
 		return "sus";
@@ -74,6 +64,67 @@ class ed_cls_settings
 		array($currentdate ));
 		$wpdb->query($sSql);
 		
+		return "sus";
+	}
+	
+	public static function ed_setting_update_downloadmail($data = array()) {
+		global $wpdb;
+		$prefix = $wpdb->prefix;
+		$sSql = $wpdb->prepare("UPDATE ".$prefix."ed_pluginconfig SET 
+		ed_c_usermailsubject = %s, ed_c_usermailcontant = %s WHERE ed_c_id = %d LIMIT 1", 
+		array($data["ed_c_usermailsubject"], $data["ed_c_usermailcontant"], $data["ed_c_id"]));
+		$wpdb->query($sSql);
+		return "sus";
+	}
+
+	public static function ed_setting_update_adminmail($data = array()) {
+		global $wpdb;
+		$prefix = $wpdb->prefix;
+		$sSql = $wpdb->prepare("UPDATE ".$prefix."ed_pluginconfig SET ed_c_adminmailoption = %s, 
+		ed_c_adminemail = %s, ed_c_adminmailsubject = %s, ed_c_adminmailcontant = %s WHERE ed_c_id = %d LIMIT 1", 
+		array($data["ed_c_adminmailoption"], $data["ed_c_adminemail"], $data["ed_c_adminmailsubject"], $data["ed_c_adminmailcontant"], $data["ed_c_id"]));
+		$wpdb->query($sSql);
+		return "sus";
+	}
+	
+	public static function ed_setting_update_messages($data = array()) {
+		global $wpdb;
+		$prefix = $wpdb->prefix;
+		$sSql = $wpdb->prepare("UPDATE ".$prefix."ed_pluginconfig SET ed_c_expiredlinkcontant = %s, ed_c_invalidlinkcontant = %s, ed_c_successmessage = %s, 
+		ed_c_toofastmessage = %s, ed_c_blockedmessage1 = %s, ed_c_blockedmessage2 = %s WHERE ed_c_id = %d LIMIT 1", 
+		array($data["ed_c_expiredlinkcontant"], $data["ed_c_invalidlinkcontant"], $data["ed_c_successmessage"], $data["ed_c_toofastmessage"],  
+		$data["ed_c_blockedmessage1"],  $data["ed_c_blockedmessage2"], $data["ed_c_id"]));
+		$wpdb->query($sSql);
+		return "sus";
+	}
+	
+	public static function ed_setting_update_gdpr($data = array()) {
+		global $wpdb;
+		$prefix = $wpdb->prefix;
+		$sSql = $wpdb->prepare("UPDATE ".$prefix."ed_pluginconfig SET ed_c_savenameemail = %s, ed_c_gdprstatus = %s, 
+		ed_c_gdprlink = %s, ed_c_gdprmessage = %s WHERE ed_c_id = %d LIMIT 1", 
+		array($data["ed_c_savenameemail"], $data["ed_c_gdprstatus"], $data["ed_c_gdprlink"], $data["ed_c_gdprmessage"], $data["ed_c_id"]));
+		$wpdb->query($sSql);
+		return "sus";
+	}
+	
+	public static function ed_setting_update_general($data = array()) {
+		global $wpdb;
+		$prefix = $wpdb->prefix;
+		$sSql = $wpdb->prepare("UPDATE ".$prefix."ed_pluginconfig SET ed_c_fromname = %s, ed_c_fromemail = %s, ed_c_mailtype = %s, 
+		ed_c_deletehistory = %s, ed_c_dowloadlink = %s WHERE ed_c_id = %d LIMIT 1", 
+		array($data["ed_c_fromname"], $data["ed_c_fromemail"], $data["ed_c_mailtype"], 
+		$data["ed_c_deletehistory"], $data["ed_c_dowloadlink"], $data["ed_c_id"]));
+		$wpdb->query($sSql);
+		return "sus";
+	}
+	
+	public static function ed_setting_update_cron($data = array()) {
+		global $wpdb;
+		$prefix = $wpdb->prefix;
+		$sSql = $wpdb->prepare("UPDATE ".$prefix."ed_pluginconfig SET ed_c_cronmailcontent = %s, ed_c_crontype = %s WHERE ed_c_id = %d LIMIT 1", 
+		array($data["ed_c_cronmailcontent"], $data["ed_c_crontype"], $data["ed_c_id"] ));
+		$wpdb->query($sSql);
 		return "sus";
 	}
 }

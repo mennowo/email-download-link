@@ -93,6 +93,43 @@ class ed_cls_common
 		header('Content-Disposition: attachment; filename='.$filename);
 		echo $string;
 	}
+	
+	public static function ed_get_subscriber_ip() {
+		if ( isset( $_SERVER["HTTP_CF_CONNECTING_IP"] ) ) {
+			$_SERVER['REMOTE_ADDR']    = $_SERVER["HTTP_CF_CONNECTING_IP"];
+			$_SERVER['HTTP_CLIENT_IP'] = $_SERVER["HTTP_CF_CONNECTING_IP"];
+		}
+
+		$client  = @$_SERVER['HTTP_CLIENT_IP'];
+		$forward = @$_SERVER['HTTP_X_FORWARDED_FOR'];
+		$remote  = $_SERVER['REMOTE_ADDR'];
+
+		if ( filter_var( $client, FILTER_VALIDATE_IP ) ) {
+			$ip = $client;
+		} elseif ( filter_var( $forward, FILTER_VALIDATE_IP ) ) {
+			$ip = $forward;
+		} else {
+			$ip = $remote;
+		}
+
+		return $ip;
+	}
+	
+	public static function ed_check_latest_update() 
+	{
+		$ed_email_download_link_ver = get_option('email-download-link');
+		if ( $ed_email_download_link_ver != "2.7" ) {
+			?>
+			<div class="error fade">
+			<p>
+				Plugin has been updated! Before we send you on your way, we have to update your plugin table to the newest version.
+				Please <a title="Sync plugin tables." href="<?php echo ED_ADMINURL; ?>?page=ed-settings&amp;ac=sync"><?php echo __( 'Click Here', 'email-download-link' ); ?></a> to update your plugin table.<br />
+				This is mandatory and it will not affect your data.
+			</p>
+			</div>
+			<?php
+		}
+	}
 		
 }
 

@@ -5,8 +5,10 @@ require_once(ED_DIR.'classes'.DIRECTORY_SEPARATOR.'ed-intermediate.php');
 require_once(ED_DIR.'classes'.DIRECTORY_SEPARATOR.'ed-common.php');
 require_once(ED_DIR.'classes'.DIRECTORY_SEPARATOR.'ed-directly.php');
 require_once(ED_DIR.'classes'.DIRECTORY_SEPARATOR.'ed-sendemail.php');
+require_once(ED_DIR.'classes'.DIRECTORY_SEPARATOR.'ed-shortcode.php');
 require_once(ED_DIR.'query'.DIRECTORY_SEPARATOR.'db_downloads.php');
 require_once(ED_DIR.'query'.DIRECTORY_SEPARATOR.'db_settings.php');
 require_once(ED_DIR.'query'.DIRECTORY_SEPARATOR.'db_subscribers.php');
 require_once(ED_DIR.'query'.DIRECTORY_SEPARATOR.'db_default.php');
+require_once(ED_DIR.'query'.DIRECTORY_SEPARATOR.'db_filter.php');
 ?>

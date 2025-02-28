@@ -8,6 +8,9 @@ function ed_delete_plugin() {
 	global $wpdb;
 
 	delete_option( 'email-download-link' );
+	delete_option( 'ed_captcha_widget' );
+	delete_option( 'ed_captcha_sitekey' );
+	delete_option( 'ed_captcha_secret' );
 
 	$wpdb->query( sprintf( "DROP TABLE IF EXISTS %s",
 		$wpdb->prefix . 'ed_emaillist' ) );
@@ -17,6 +20,9 @@ function ed_delete_plugin() {
 		
 	$wpdb->query( sprintf( "DROP TABLE IF EXISTS %s",
 		$wpdb->prefix . 'ed_pluginconfig' ) );
+		
+	$wpdb->query( sprintf( "DROP TABLE IF EXISTS %s",
+		$wpdb->prefix . 'ed_filter' ) );
 }
 
 ed_delete_plugin();

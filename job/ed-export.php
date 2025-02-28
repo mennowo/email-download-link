@@ -22,6 +22,11 @@ if(isset($_GET['ed']))
 						$data = ed_cls_subscribers::ed_subscribers_export_page("ed_full_details");
 						ed_cls_common::ed_download($data, '', 'r');
 						break;
+					case "ed_full_details_withtitle":
+						$data = array();
+						$data = ed_cls_subscribers::ed_subscribers_export_page("ed_full_details_withtitle");
+						ed_cls_common::ed_download($data, '', 'r');
+						break;
 					default:
 						_e('Unexpected url submit has been detected', 'email-download-link');
 						break;

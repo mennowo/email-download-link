@@ -1,12 +1,12 @@
 === Email download link ===
-Original author: gopiplus, www.gopiplus.com
-Author for version 2.0.0: Menno van der Woude, www.codingconnected.eu
-Author URI: https://www.codingconnected.eu/
+Contributors: gopiplus, www.gopiplus.com
+Donate link: http://www.gopiplus.com/work/donation.php
+Author URI: http://www.gopiplus.com/work/
 Plugin URI: http://www.gopiplus.com/work/2016/03/01/email-download-link-wordpress-plugin/
 Tags: contact form, download, download form, email link
 Requires at least: 4.0
-Tested up to: 5.2
-Stable tag: 1.9
+Tested up to: 6.0
+Stable tag: 3.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -15,6 +15,12 @@ This will send a download link to user after they have submitted a form.  i.e. S
 == Description ==
 
 This plugin will send a download link to user after they have submitted a form. i.e. Send email with download link to users after signing up. There are lots of reasons you might want to send to a download link to your user after they have submitted a form.
+
+Check official website for live demo [http://www.gopiplus.com/work/2016/03/01/email-download-link-wordpress-plugin/](http://www.gopiplus.com/work/2016/03/01/email-download-link-wordpress-plugin/)
+
+*   [Live Demo](http://www.gopiplus.com/work/2016/03/01/email-download-link-wordpress-plugin/ "Live Demo")
+*   [Documentation](http://www.gopiplus.com/work/2016/03/01/email-download-link-wordpress-plugin/ "Documentation")
+*   [Video Tutorial](http://www.gopiplus.com/work/2016/03/01/email-download-link-wordpress-plugin/ "Video Tutorial")
 
 ### Benefits of this plugin
 
@@ -25,6 +31,9 @@ This plugin will send a download link to user after they have submitted a form. 
 *  Export signing up email address.
 *  Refresh download link automatically with specific interval.
 *  Google reCAPTCHA option.
+*  Security/badword filter to protect download form.
+*  Throttling mechanism to protect spam submission.
+*  Option to enable/disable GDPR checkbox.
 
 ### Plugin configuration
 
@@ -32,9 +41,13 @@ This plugin will send a download link to user after they have submitted a form. 
 
 This can be used in any page or post within your blog. When your blog encounters text formatted in this style and recognizes it as a >Email download link subscription box.
 
-`[email-download-link namefield="YES" desc=""]`
+`[email-download-link namefield="YES" id="1"]`
 
 `[email-download-link namefield="YES" group="Default"]`
+
+`[email-download-link namefield="NO" group="Default" phone="YES"]`
+
+Please check official website for more info about short code.
 
 = Add directly in the theme =
 
@@ -51,7 +64,6 @@ To add Email download link Subscriptions Box widget to your sidebar, go to your 
 Translations inside plugin :
 
 Portuguese (Brazil) [Flavio Escobar](http://www.flavioescobar.com.br)
-Dutch (Netherlands) [Menno van der Woude](https://www.codingconnected.eu)
 
 == Installation ==
 
@@ -156,9 +168,100 @@ Option 3:
 
 * Tested up to 5.1
 
-= 2.0.0 =
+= 2.0 =
 
-* Added an option to display a checkbox for privacy consent.
+* Tested up to 5.2
+
+= 2.0 =
+
+* Tested up to 5.2
+* New keywords (###NAME###, ###EMAIL###, ###TITLE###) added for download link email subject
+* Feature added to set the position after form submit.
+
+= 2.1 =
+
+* Tested up to 5.3
+* Option added to NOT SAVE name and email address. This will be useful those who don't want to save their downloader name and email. Save downloader name/email option at plugin setting page. This option is useful for GDPR privacy policy.
+
+= 2.2 =
+
+* Changes in the download forms, Ajax submission introduced to stop duplicate email.
+
+= 2.3 =
+
+* Bug in the uninstall.php is fixed.
+* Direct download link is added in the download page.
+* Admin option added to update form successful submit message (Go to setting page in the admin dashboard to find the option).
+* Download history (Name and Email) will be deleted automatically after N number of days. (Go to setting page in the admin dashboard to find the option to set number of days).
+
+= 2.4 =
+
+* Option added in the setting admin page to SHOW or HIDE direct download link in the download page.
+
+= 2.5 =
+
+1. New admin layout for settings and security menu. 
+2. Added security option in the download form submission (Option to block the submission by Domain, IP).
+3. Throttling mechanism is added to protect spam submission.
+4. Option added to filter bad word in the download form name.
+5. Plugin date and time format is changed in the admin display as per default format of the blog.
+6. New default template design is added in the plugin template section.
+7. Option added to enable/disable GDPR checkbox in download form.
+
+= 2.6 =
+
+* Bug fix - Email not send if GDPR checkbox is not checked.
+
+= 2.7 =
+
+1. Phone number input box added in the download form. (New parameter in short code)
+2. <span> tag added for the download box caption. Now we can hide Name and Email caption in the download form using below CSS class.
+
+= 2.8 =
+
+* Tested up to 5.4
+
+= 2.9 =
+
+* Tested up to 5.5
+
+= 3.0 =
+
+* Tested up to 5.6
+* New export option added to export download emails with download form title.
+
+= 3.1 =
+
+* CURLOPT_USERAGENT parameter added in the download code.
+* Minor cosmetic change in the form. 
+
+= 3.2 =
+
+* Tested up to 5.7
+
+= 3.3 =
+
+* Tested up to 5.8
+* Use plugin short code in the widget.
+
+= 3.4 =
+
+* Added new keyword ###PHONE### in the admin mail content.
+
+= 3.5 =
+
+* Tested up to 5.9
+* Added new option in the cron run (Refresh on every Mon, Wed and Friday)
+
+= 3.6 =
+
+* Tested up to 5.9.3
+* Added CSS class to the download form to use it to change the form design.
+
+= 3.7 =
+
+* Tested up to 6.0
+* Security fix
 
 == Upgrade Notice ==
 
@@ -204,7 +307,8 @@ Option 3:
 
 = 1.7 =
 
-* Google reCAPTCHA option added in the plugin. reCAPTCHA helps prevent bots from adding fake or malicious email addresses to your list.
+* Google reCAPTCHA option added in the plugin. reCAPTCHA helps prevent 
+bots from adding fake or malicious email addresses to your list.
 
 = 1.8 =
 
@@ -216,6 +320,93 @@ Option 3:
 
 * Tested up to 5.1
 
-= 2.0.0 =
+= 2.0 =
 
-* Added an option to display a checkbox for privacy consent.
+* Tested up to 5.2
+* New keywords (###NAME###, ###EMAIL###, ###TITLE###) added for download link email subject
+* Feature added to set the position after form submit.
+
+= 2.1 =
+
+* Tested up to 5.3
+* Option added to NOT SAVE name and email address. This will be useful those who don't want to save their downloader name and email. Save downloader name/email option at plugin setting page. This option is useful for GDPR privacy policy.
+
+= 2.2 =
+
+* Changes in the download forms, Ajax submission introduced to stop duplicate email.
+
+= 2.3 =
+
+* Bug in the uninstall.php is fixed.
+* Direct download link is added in the download page.
+* Admin option added to update form successful submit message (Go to setting page in the admin dashboard to find the option).
+* Download history (Name and Email) will be deleted automatically after N number of days. (Go to setting page in the admin dashboard to find the option to set number of days).
+
+= 2.4 =
+
+* Option added in the setting admin page to SHOW or HIDE direct download link in the download page.
+
+= 2.5 =
+
+1. New admin layout for settings and security menu. 
+2. Added security option in the download form submission (Option to block the submission by Domain, IP).
+3. Throttling mechanism is added to protect spam submission.
+4. Option added to filter bad word in the download form name.
+5. Plugin date and time format is changed in the admin display as per default format of the blog.
+6. New default template design is added in the plugin template section.
+7. Option added to enable/disable GDPR checkbox in download form.
+
+= 2.6 =
+
+* Bug fix - Email not send if GDPR checkbox is not checked.
+
+= 2.7 =
+
+1. Phone number input box added in the download form. (New parameter in short code)
+2. <span> tag added for the download box caption. Now we can hide Name and Email caption in the download form using below CSS class.
+
+= 2.8 =
+
+* Tested up to 5.4
+
+= 2.9 =
+
+* Tested up to 5.5
+
+= 3.0 =
+
+* Tested up to 5.6
+* New export option added to export download emails with download form title.
+
+= 3.1 =
+
+* CURLOPT_USERAGENT parameter added in the download code.
+* Minor cosmetic change in the form. 
+
+= 3.2 =
+
+* Tested up to 5.7
+
+= 3.3 =
+
+* Tested up to 5.8
+* Use plugin short code in the widget.
+
+= 3.4 =
+
+* Added new keyword ###PHONE### in the admin mail content.
+
+= 3.5 =
+
+* Tested up to 5.9
+* Added new option in the cron run (Refresh on every Mon, Wed and Friday)
+
+= 3.6 =
+
+* Tested up to 5.9.3
+* Added CSS class to the download form to use it to change the form design.
+
+= 3.7 =
+
+* Tested up to 6.0
+* Security fix

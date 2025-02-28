@@ -1,5 +1,6 @@
 <?php if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) { die('You are not allowed to call this page directly.'); } ?>
 <?php if ( ! empty( $_POST ) && ! wp_verify_nonce( $_REQUEST['wp_create_nonce'], 'downloads-nonce' ) )  { die('<p>Security check failed.</p>'); } ?>
+<?php ed_cls_common::ed_check_latest_update(); ?>
 <?php
 $ac = isset($_GET['ac']) ? $_GET['ac'] : '';
 $id = 0;
@@ -58,6 +59,7 @@ if (isset($_POST['frm_ed_display']) && $_POST['frm_ed_display'] == 'yes')
 		  	<!--<th class="check-column" scope="col" style="padding: 8px 2px;"><input type="checkbox" /></th>-->
 			<th scope="col"><?php _e('Email', 'email-download-link'); ?></th>
 			<th scope="col"><?php _e('Name', 'email-download-link'); ?></th>
+			<th scope="col"><?php _e('Phone', 'email-download-link'); ?></th>
 			<th scope="col"><?php _e('Downloaded', 'email-download-link'); ?></th>
 			<th scope="col"><?php _e('Download Title', 'email-download-link'); ?></th>
 			<th scope="col"><?php _e('Downloads', 'email-download-link'); ?></th>
@@ -69,6 +71,7 @@ if (isset($_POST['frm_ed_display']) && $_POST['frm_ed_display'] == 'yes')
 		  	<!--<th class="check-column" scope="col" style="padding: 8px 2px;"><input type="checkbox" /></th>-->
 			<th scope="col"><?php _e('Email', 'email-download-link'); ?></th>
 			<th scope="col"><?php _e('Name', 'email-download-link'); ?></th>
+			<th scope="col"><?php _e('Phone', 'email-download-link'); ?></th>
 			<th scope="col"><?php _e('Downloaded', 'email-download-link'); ?></th>
 			<th scope="col"><?php _e('Download Title', 'email-download-link'); ?></th>
 			<th scope="col"><?php _e('Downloads ', 'email-download-link'); ?></th>
@@ -87,8 +90,15 @@ if (isset($_POST['frm_ed_display']) && $_POST['frm_ed_display'] == 'yes')
 				<tr class="<?php if ($i&1) { echo'alternate'; } else { echo ''; }?>">
 				<!--<td align="left"><input type="checkbox" value="<?php //echo $data['ed_email_id']; ?>"></td>-->
 				<td><a title="View by email" href="<?php echo ED_ADMINURL; ?>?page=ed-downloadhistory&amp;ac=email&amp;email=<?php echo $data['ed_email_mail']; ?>"><?php echo $data['ed_email_mail']; ?></a></td>
-				<td><?php echo $data['ed_email_name']; ?></td>    
-				<td><?php echo $data['ed_email_downloaddate']; ?></td>
+				<td><?php echo $data['ed_email_name']; ?></td>
+				<td><?php echo $data['ed_email_phone']; ?></td>
+				<td>
+				<?php
+				$date_format = get_option( 'date_format' );
+				$time_format = get_option( 'time_format' );
+				echo date($date_format . ' ' . $time_format, strtotime($data['ed_email_downloaddate'])); 
+				?>
+				</td>
 				<td>
 				<?php
 				$downloads = array();
@@ -109,7 +119,7 @@ if (isset($_POST['frm_ed_display']) && $_POST['frm_ed_display'] == 'yes')
 		{
 			?>
 			<tr>
-				<td colspan="6" align="center"><?php _e('No records available', 'email-download-link'); ?></td>
+				<td colspan="7" align="center"><?php _e('No records available', 'email-download-link'); ?></td>
 			</tr>
 			<?php 
 		}
@@ -140,11 +150,12 @@ if (isset($_POST['frm_ed_display']) && $_POST['frm_ed_display'] == 'yes')
 	  <input type="hidden" name="wp_create_nonce" id="wp_create_nonce" value="<?php echo wp_create_nonce( 'downloads-nonce' ); ?>"/>
 	  <input type="hidden" name="frm_ed_display" value="yes"/>
 	</form>
+	<div style="height:10px;"></div>
 	<div class="tablenav bottom">
 		<div class="alignleft actions">
-			<a href="<?php echo ED_ADMINURL; ?>?page=ed-downloadhistory"><input class="button action" type="button" value="<?php _e('Back', 'email-download-link'); ?>" /></a>
-			<a href="<?php echo ED_ADMINURL; ?>?page=ed-downloadhistory&ac=export"><input class="button action" type="button" value="<?php _e('Export Emails', 'email-download-link'); ?>" /></a>
-			<a href="<?php echo ED_FAV; ?>" target="_blank"><input class="button action" type="button" value="<?php _e('Help', 'email-download-link'); ?>" /></a>
+			<a href="<?php echo ED_ADMINURL; ?>?page=ed-downloadhistory"><input class="button button-primary" type="button" value="<?php _e('Back', 'email-download-link'); ?>" /></a>
+			<a href="<?php echo ED_ADMINURL; ?>?page=ed-downloadhistory&ac=export"><input class="button button-primary" type="button" value="<?php _e('Export Emails', 'email-download-link'); ?>" /></a>
+			<a href="<?php echo ED_FAV; ?>" target="_blank"><input class="button button-primary" type="button" value="<?php _e('Help', 'email-download-link'); ?>" /></a>
 		</div>
 		<div class="tablenav-pages">
 			<div>
@@ -154,6 +165,5 @@ if (isset($_POST['frm_ed_display']) && $_POST['frm_ed_display'] == 'yes')
 			</div>
 		</div>
 	</div>
-    <p class="description"><?php echo ED_OFFICIAL; ?></p>
   </div>
 </div>

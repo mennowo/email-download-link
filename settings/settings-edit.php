@@ -1,18 +1,7 @@
 <?php if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) { die('You are not allowed to call this page directly.'); } ?>
+<?php ed_cls_common::ed_check_latest_update(); ?>
 <div class="wrap">
 <?php
-
-$ed_email_download_link_ver = get_option('email-download-link');
-if ( $ed_email_download_link_ver != "1.6.1" ) {
-	?><div class="error fade">
-		<p>
-		Note: You have recently upgraded the plugin and your tables are not sync.
-		Please <a title="Sync plugin tables." href="<?php echo ED_ADMINURL; ?>?page=ed-settings&amp;ac=sync"><?php echo __( 'Click Here', 'email-download-link' ); ?></a> to sync the table.
-		This is mandatory and it will not affect your data.
-		</p>
-	</div><?php
-}
-
 $ed_errors = array();
 $ed_success = '';
 $ed_error_found = false;
@@ -34,9 +23,13 @@ if ($result != '1')
 		'ed_c_usermailsubject' => '',
 		'ed_c_usermailcontant' => '',
 		'ed_c_downloadstart' => '',
-		'ed_c_downloadpgtxt' => ''
+		'ed_c_downloadpgtxt' => '',
 		//'ed_c_cronurl' => '',
 		//'ed_c_cronmailcontent' => ''
+		'ed_c_savenameemail' => '',
+		'ed_c_successmessage' => '',
+		'ed_c_deletehistory' => '',
+		'ed_c_dowloadlink' => ''
 	);
 }
 else
@@ -67,7 +60,10 @@ else
 		//'ed_c_cronmailcontent' => $data['ed_c_cronmailcontent']
 		'ed_c_expiredlinkcontant' => $data['ed_c_expiredlinkcontant'],
 		'ed_c_invalidlinkcontant' => $data['ed_c_invalidlinkcontant'],
-        'ed_c_privacyconditionslink' => $data['ed_c_privacyconditionslink'],
+		'ed_c_savenameemail' 	=> $data['ed_c_savenameemail'],
+		'ed_c_successmessage' 	=> $data['ed_c_successmessage'],
+		'ed_c_deletehistory' 	=> $data['ed_c_deletehistory'],
+		'ed_c_dowloadlink' 		=> $data['ed_c_dowloadlink'],
 	);
 }
 
@@ -93,8 +89,11 @@ if (isset($_POST['ed_form_submit']) && $_POST['ed_form_submit'] == 'yes')
 	//$form['ed_c_cronurl'] 			= isset($_POST['ed_c_cronurl']) ? $_POST['ed_c_cronurl'] : '';
 	//$form['ed_c_cronmailcontent'] 	= isset($_POST['ed_c_cronmailcontent']) ? $_POST['ed_c_cronmailcontent'] : '';
 	$form['ed_c_expiredlinkcontant'] 	= isset($_POST['ed_c_expiredlinkcontant']) ? wp_filter_post_kses($_POST['ed_c_expiredlinkcontant']) : '';
-    $form['ed_c_invalidlinkcontant'] 	= isset($_POST['ed_c_invalidlinkcontant']) ? wp_filter_post_kses($_POST['ed_c_invalidlinkcontant']) : '';
-    $form['ed_c_privacyconditionslink'] = isset($_POST['ed_c_privacyconditionslink']) ? sanitize_text_field($_POST['ed_c_privacyconditionslink']) : '';
+	$form['ed_c_invalidlinkcontant'] 	= isset($_POST['ed_c_invalidlinkcontant']) ? wp_filter_post_kses($_POST['ed_c_invalidlinkcontant']) : '';
+	$form['ed_c_savenameemail'] 		= isset($_POST['ed_c_savenameemail']) ? sanitize_text_field($_POST['ed_c_savenameemail']) : '';
+	$form['ed_c_successmessage'] 		= isset($_POST['ed_c_successmessage']) ? wp_filter_post_kses($_POST['ed_c_successmessage']) : '';
+	$form['ed_c_deletehistory'] 		= isset($_POST['ed_c_deletehistory']) ? sanitize_text_field($_POST['ed_c_deletehistory']) : '';
+	$form['ed_c_dowloadlink'] 			= isset($_POST['ed_c_dowloadlink']) ? sanitize_text_field($_POST['ed_c_dowloadlink']) : '';
 
 	$form['ed_c_fromemail'] 				= sanitize_email($form['ed_c_fromemail']); 
 
@@ -109,13 +108,6 @@ if (isset($_POST['ed_form_submit']) && $_POST['ed_form_submit'] == 'yes')
 		$ed_errors[] = __('Please enter sender of notifications from email.', 'email-download-link');
 		$ed_error_found = true;
 	}
-
-    if ($form['ed_c_privacyconditionslink'] !== '' && !wp_http_validate_url($form['ed_c_privacyconditionslink']))
-    {
-        $form['ed_c_privacyconditionslink'] = '';
-        $ed_errors[] = __('Please enter a valid web link to the privacy conditions.', 'email-download-link');
-        $ed_error_found = true;
-    }
 	
 	//	No errors found, we can add this Group to the table
 	if ($ed_error_found == false)
@@ -197,7 +189,8 @@ if ($ed_error_found == false && strlen($ed_success) > 0)
 		<tr>
 			<th scope="row"> 
 				<label for="elp"><?php _e('Download link mail subject', 'email-download-link'); ?>
-				<p class="description"><?php _e('Enter the mail subject for download link mail. This will send whenever user is requested download link.', 'email-download-link'); ?></p></label>
+				<p class="description"><?php _e('Enter the mail subject for download link mail. This will send whenever user is requested download link.', 'email-download-link'); ?>
+				(Keyword: ###NAME###, ###EMAIL###, ###TITLE###)</p></label>
 			</th>
 			<td><input name="ed_c_usermailsubject" type="text" id="ed_c_usermailsubject" value="<?php echo esc_html(stripslashes($form['ed_c_usermailsubject'])); ?>" size="60" maxlength="225" /></td>
 		</tr>
@@ -251,23 +244,64 @@ if ($ed_error_found == false && strlen($ed_success) > 0)
 				<label for="elp"><?php _e('Expired link content', 'email-download-link'); ?>
 				<p class="description"><?php _e('Enter the content to display if download link has expired.', 'email-download-link'); ?></p></label>
 			</th>
-			<td><textarea size="100" id="ed_c_expiredlinkcontant" rows="5" cols="58" name="ed_c_expiredlinkcontant"><?php echo esc_html(stripslashes($form['ed_c_expiredlinkcontant'])); ?></textarea></td>
+			<td><textarea size="100" id="ed_c_expiredlinkcontant" rows="3" cols="58" name="ed_c_expiredlinkcontant"><?php echo esc_html(stripslashes($form['ed_c_expiredlinkcontant'])); ?></textarea></td>
 		</tr>
 		<tr>
 			<th scope="row"> 
 				<label for="elp"><?php _e('Invalid link content', 'email-download-link'); ?>
 				<p class="description"><?php _e('Enter the content to display if download link is invalid.', 'email-download-link'); ?></p></label>
 			</th>
-			<td><textarea size="100" id="ed_c_invalidlinkcontant" rows="5" cols="58" name="ed_c_invalidlinkcontant"><?php echo esc_html(stripslashes($form['ed_c_invalidlinkcontant'])); ?></textarea></td>
+			<td><textarea size="100" id="ed_c_invalidlinkcontant" rows="3" cols="58" name="ed_c_invalidlinkcontant"><?php echo esc_html(stripslashes($form['ed_c_invalidlinkcontant'])); ?></textarea></td>
+		</tr>
+		<tr>
+			<th scope="row"> 
+				<label for="elp"><?php _e('Successful message', 'email-download-link'); ?>
+				<p class="description"><?php _e('Message to display after download link form submission successfully.', 'email-download-link'); ?></p></label>
+			</th>
+			<td><textarea size="100" id="ed_c_successmessage" rows="3" cols="58" name="ed_c_successmessage"><?php echo esc_html(stripslashes($form['ed_c_successmessage'])); ?></textarea></td>
 		</tr>
 		<!-------------------------------------------------------------------------------->
-        <tr>
-            <th scope="row">
-                <label for="elp"><?php _e('Privacy conditions', 'email-download-link'); ?>
-                    <p class="description"><?php _e('Enter the link to the page with privacy conditions. When this field is left empty  the privacy conditions checkbox will not be displayed.', 'email-download-link'); ?></p></label>
-            </th>
-            <td><input name="ed_c_privacyconditionslink" type="text" id="ed_c_privacyconditionslink" value="<?php echo esc_html(stripslashes($form['ed_c_privacyconditionslink'])); ?>" size="60" maxlength="225" /></td>
-        </tr>
+		<tr>
+			<th scope="row"> 
+				<label for="elp"><?php _e('Save downloader name/email', 'email-download-link'); ?>
+				<p class="description"><?php _e('Set NO if you do not want to save downloader name and email, instead plugin use default name and email to count the download history. This option is useful for GDPR privacy policy.', 'email-download-link'); ?></p></label>
+			</th>
+			<td>
+			<select name="ed_c_savenameemail" id="ed_c_savenameemail">
+				<option value='YES' <?php if($form['ed_c_savenameemail'] == 'YES') { echo 'selected' ; } ?>>YES</option>
+				<option value='NO' <?php if($form['ed_c_savenameemail'] == 'NO') { echo 'selected' ; } ?>>NO</option>
+			</select>
+			</td>
+		</tr>
+		<tr>
+			<th scope="row"> 
+				<label for="elp"><?php _e('Auto delete download history', 'email-download-link'); ?>
+				<p class="description"><?php _e('Automatically delete download history after specific number of days. Plugin use WP CRON option to delete the history.', 'email-download-link'); ?></p></label>
+			</th>
+			<td>
+			<select name="ed_c_deletehistory" id="ed_c_deletehistory">
+				<option value='0' <?php if($form['ed_c_deletehistory'] == '0') { echo 'selected' ; } ?>>Do not delete</option>
+				<option value='1' <?php if($form['ed_c_deletehistory'] == '1') { echo 'selected' ; } ?>>Delete after 1 day</option>
+				<option value='7' <?php if($form['ed_c_deletehistory'] == '7') { echo 'selected' ; } ?>>Delete after 7 days</option>
+				<option value='14' <?php if($form['ed_c_deletehistory'] == '14') { echo 'selected' ; } ?>>Delete after 14 days</option>
+				<option value='21' <?php if($form['ed_c_deletehistory'] == '21') { echo 'selected' ; } ?>>Delete after 21 days</option>
+				<option value='28' <?php if($form['ed_c_deletehistory'] == '28') { echo 'selected' ; } ?>>Delete after 28 days</option>
+				<option value='31' <?php if($form['ed_c_deletehistory'] == '31') { echo 'selected' ; } ?>>Delete after 1 Month</option>
+			</select>
+			</td>
+		</tr>
+		<tr>
+			<th scope="row"> 
+				<label for="elp"><?php _e('Show direct download', 'email-download-link'); ?>
+				<p class="description"><?php _e('This option is to SHOW or HIDE direct download link in the download page. Set NO if you dont like to show direct download link to your users.', 'email-download-link'); ?></p></label>
+			</th>
+			<td>
+			<select name="ed_c_dowloadlink" id="ed_c_dowloadlink">
+				<option value='YES' <?php if($form['ed_c_dowloadlink'] == 'YES') { echo 'selected' ; } ?>>YES</option>
+				<option value='NO' <?php if($form['ed_c_dowloadlink'] == 'NO') { echo 'selected' ; } ?>>NO</option>
+			</select>
+			</td>
+		</tr>
 		<!-------------------------------------------------------------------------------->
 	</tbody>
 	</table>

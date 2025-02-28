@@ -18,10 +18,20 @@ if(isset($_GET['ed']))
 			$ed_c_cronmailcontent 	= esc_html(stripslashes($data['ed_c_cronmailcontent']));
 			parse_str($ed_c_cronurl, $output);
 			
+			$ed_c_deletehistory = 0; 
+			$ed_c_deletehistory = isset($data['ed_c_deletehistory']) ? $data['ed_c_deletehistory'] : '0';
+			if(!is_numeric($ed_c_deletehistory)) { 
+				$ed_c_deletehistory = 0; 
+			}
+			
 			if($guid == $output['guid'])
 			{
 				ed_cls_downloads::ed_download_link_cron_refresh();
 				ed_cls_sendemail::ed_sendemail_admincron();
+			}
+			
+			if($ed_c_deletehistory > 0) {
+				ed_cls_subscribers::ed_subscriber_delete_days($ed_c_deletehistory);
 			}
 		}
 	}

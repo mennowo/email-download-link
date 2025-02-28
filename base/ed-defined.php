@@ -20,5 +20,4 @@ if(!defined('ED_MSG_04')) define('ED_MSG_04', __('Download link sent successfull
 if(!defined('ED_MSG_05')) define('ED_MSG_05', __('color: #FF3300;', 'email-download-link'));
 if(!defined('ED_MSG_06')) define('ED_MSG_06', __('color: #00CC00;', 'email-download-link'));
 if(!defined('ED_MSG_07')) define('ED_MSG_07', __('Please select your downloads.', 'email-download-link'));
-if(!defined('ED_MSG_08')) define('ED_MSG_08', __('You must accept the privacy conditions to download this file.', 'email-download-link'));
 ?>

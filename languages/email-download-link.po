@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Email download link\n"
-"POT-Creation-Date: 2018-10-13 14:28+0800\n"
-"PO-Revision-Date: 2018-10-13 14:28+0800\n"
+"POT-Creation-Date: 2020-01-27 16:29+0800\n"
+"PO-Revision-Date: 2020-01-27 16:29+0800\n"
 "Last-Translator: \n"
 "Language-Team: www.gopiplus.com\n"
 "MIME-Version: 1.0\n"
@@ -13,11 +13,13 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../base/ed-defined.php:16
+#: ../base/ed-defined.php:16 ../classes/ed-register.php:166
+#: ../classes/ed-sendemail.php:510
 msgid "Please fill in the required field."
 msgstr ""
 
-#: ../base/ed-defined.php:17
+#: ../base/ed-defined.php:17 ../classes/ed-register.php:168
+#: ../classes/ed-sendemail.php:512
 msgid "Email address seems invalid."
 msgstr ""
 
@@ -26,7 +28,8 @@ msgid ""
 "Validation errors occurred. Please confirm the fields and submit it again."
 msgstr ""
 
-#: ../base/ed-defined.php:19
+#: ../base/ed-defined.php:19 ../classes/ed-register.php:170
+#: ../classes/ed-sendemail.php:514
 msgid "Download link sent successfully to your email address."
 msgstr ""
 
@@ -38,278 +41,192 @@ msgstr ""
 msgid "color: #00CC00;"
 msgstr ""
 
-#: ../base/ed-defined.php:22
+#: ../base/ed-defined.php:22 ../classes/ed-register.php:171
+#: ../classes/ed-sendemail.php:515
 msgid "Please select your downloads."
 msgstr ""
 
-#: ../classes/ed-register.php:84
+#: ../classes/ed-common.php:126
+msgid "Click Here"
+msgstr ""
+
+#: ../classes/ed-register.php:104
 msgid "These tables could not be created on installation "
 msgstr ""
 
-#: ../classes/ed-register.php:114 ../classes/ed-register.php:117
-#: ../classes/ed-register.php:120 ../classes/ed-register.php:123
-#: ../classes/ed-register.php:126 ../classes/ed-register.php:129
+#: ../classes/ed-register.php:135 ../classes/ed-register.php:138
+#: ../classes/ed-register.php:144 ../classes/ed-register.php:147
+#: ../classes/ed-register.php:153
 msgid "Email download link"
 msgstr ""
 
-#: ../classes/ed-register.php:115
+#: ../classes/ed-register.php:136
 msgid "Download Link"
 msgstr ""
 
-#: ../classes/ed-register.php:118 ../downloads/downloads-show.php:66
-#: ../downloads/downloads-show.php:77 ../downloads/downloads-show.php:105
-#: ../subscribers/subscribers-downloads.php:63
-#: ../subscribers/subscribers-email.php:62
-#: ../subscribers/subscribers-email.php:73
+#: ../classes/ed-register.php:139 ../downloads/downloads-show.php:57
+#: ../downloads/downloads-show.php:68 ../downloads/downloads-show.php:96
+#: ../subscribers/subscribers-downloads.php:64
+#: ../subscribers/subscribers-email.php:63
+#: ../subscribers/subscribers-email.php:74
+#: ../subscribers/subscribers-show.php:57
 #: ../subscribers/subscribers-show.php:67
-#: ../subscribers/subscribers-show.php:77
 msgid "Downloads"
 msgstr ""
 
-#: ../classes/ed-register.php:121 ../cron/cron-add.php:121
-msgid "Cron Details"
-msgstr ""
-
-#: ../classes/ed-register.php:124 ../settings/settings-edit.php:159
+#: ../classes/ed-register.php:145 ../settings/settings-edit.php:160
 msgid "Settings"
 msgstr ""
 
-#: ../classes/ed-register.php:127
-msgid "Download History"
+#: ../classes/ed-register.php:148
+msgid "History"
 msgstr ""
 
-#: ../classes/ed-register.php:130
-msgid "Google reCAPTCHA"
+#: ../classes/ed-register.php:154
+msgid "Security"
 msgstr ""
 
-#: ../classes/ed-register.php:146 ../classes/ed-register.php:174
+#: ../classes/ed-register.php:167 ../classes/ed-sendemail.php:511
+msgid "Name seems invalid."
+msgstr ""
+
+#: ../classes/ed-register.php:169 ../classes/ed-sendemail.php:513
+#: ../settings/settings-adminmail.php:47 ../settings/settings-cron.php:45
+#: ../settings/settings-downloadmail.php:51 ../settings/settings-gdpr.php:47
+#: ../settings/settings-general.php:50 ../settings/settings-messages.php:53
+msgid "Oops.. Unexpected error occurred."
+msgstr ""
+
+#: ../classes/ed-register.php:172 ../classes/ed-register.php:455
+#: ../classes/ed-sendemail.php:516
+msgid "Robot verification failed, please try again."
+msgstr ""
+
+#: ../classes/ed-register.php:173 ../classes/ed-sendemail.php:517
+msgid "You are trying to submit too fast. try again in 1 minute."
+msgstr ""
+
+#: ../classes/ed-register.php:174 ../classes/ed-sendemail.php:518
+msgid ""
+"Your submission is not accepted due to security reason. Please contact admin."
+msgstr ""
+
+#: ../classes/ed-register.php:175 ../classes/ed-sendemail.php:519
+msgid ""
+"Entered name or email contains a word that is not allowed. Please contact "
+"admin."
+msgstr ""
+
+#: ../classes/ed-register.php:200 ../classes/ed-register.php:228
+#: ../classes/ed-register.php:243
 msgid "Do you want to delete this record?"
 msgstr ""
 
-#: ../classes/ed-register.php:147 ../downloads/downloads-add.php:157
+#: ../classes/ed-register.php:201 ../downloads/downloads-add.php:157
 #: ../downloads/downloads-edit.php:153
 msgid "Please enter title for your download link."
 msgstr ""
 
-#: ../classes/ed-register.php:148 ../downloads/downloads-add.php:153
+#: ../classes/ed-register.php:202 ../downloads/downloads-add.php:153
 #: ../downloads/downloads-edit.php:149
 msgid ""
 "Please upload your file to generate download link or enter your download "
 "link."
 msgstr ""
 
-#: ../classes/ed-register.php:149 ../downloads/downloads-add.php:179
+#: ../classes/ed-register.php:203 ../downloads/downloads-add.php:179
 #: ../downloads/downloads-edit.php:183
 msgid "Please enter expiration date for this download URL. YYYY-MM-DD."
 msgstr ""
 
-#: ../classes/ed-register.php:150 ../downloads/downloads-add.php:186
+#: ../classes/ed-register.php:204 ../downloads/downloads-add.php:186
 #: ../downloads/downloads-edit.php:190
 msgid "Please select your refresh type for the download link."
 msgstr ""
 
-#: ../classes/ed-register.php:151 ../downloads/downloads-add.php:58
+#: ../classes/ed-register.php:205 ../downloads/downloads-add.php:58
 #: ../downloads/downloads-add.php:174 ../downloads/downloads-edit.php:179
 msgid "Please select or enter your group name for this download link."
 msgstr ""
 
-#: ../classes/ed-register.php:175
+#: ../classes/ed-register.php:229
 msgid "Do you want to export the emails?"
 msgstr ""
 
-#: ../classes/ed-register.php:184
+#: ../classes/ed-register.php:238
 msgid "Please enter valid site key value."
 msgstr ""
 
-#: ../classes/ed-register.php:185
+#: ../classes/ed-register.php:239
 msgid "Please enter valid secret key value."
 msgstr ""
 
-#: ../classes/ed-register.php:186
+#: ../classes/ed-register.php:240
 msgid "Do you want to update all the details."
 msgstr ""
 
-#: ../classes/ed-register.php:341
-msgid "Robot verification failed, please try again."
+#: ../classes/ed-register.php:241
+msgid "Please select blocked type."
 msgstr ""
 
-#: ../classes/ed-register.php:397 ../subscribers/subscribers-downloads.php:60
-#: ../subscribers/subscribers-downloads.php:71
-#: ../subscribers/subscribers-email.php:59
-#: ../subscribers/subscribers-email.php:70
+#: ../classes/ed-register.php:242
+msgid "Please enter blocked value."
+msgstr ""
+
+#: ../classes/ed-register.php:534 ../classes/ed-shortcode.php:101
+#: ../classes/ed-shortcode.php:111 ../subscribers/subscribers-downloads.php:61
+#: ../subscribers/subscribers-downloads.php:72
+#: ../subscribers/subscribers-email.php:60
+#: ../subscribers/subscribers-email.php:71
+#: ../subscribers/subscribers-show.php:54
 #: ../subscribers/subscribers-show.php:64
-#: ../subscribers/subscribers-show.php:74
 msgid "Name"
 msgstr ""
 
-#: ../classes/ed-register.php:411
+#: ../classes/ed-register.php:548 ../classes/ed-shortcode.php:117
+#: ../classes/ed-shortcode.php:120
 msgid "Email *"
 msgstr ""
 
-#: ../classes/ed-register.php:434
-msgid "Dowloads *"
+#: ../classes/ed-register.php:571 ../classes/ed-shortcode.php:145
+msgid "Downloads *"
 msgstr ""
 
-#: ../classes/ed-register.php:438 ../downloads/downloads-add.php:161
-#: ../downloads/downloads-edit.php:157
+#: ../classes/ed-register.php:575 ../classes/ed-shortcode.php:149
+#: ../downloads/downloads-add.php:161 ../downloads/downloads-edit.php:157
 msgid "Select"
 msgstr ""
 
-#: ../classes/ed-register.php:458
+#: ../classes/ed-register.php:595 ../classes/ed-shortcode.php:198
 msgid "Send Download Link"
 msgstr ""
 
-#: ../classes/ed-register.php:557
+#: ../classes/ed-register.php:697
 msgid "Widget title"
 msgstr ""
 
-#: ../classes/ed-register.php:561
+#: ../classes/ed-register.php:701
 msgid "Short description for your download form."
 msgstr ""
 
-#: ../classes/ed-register.php:565
+#: ../classes/ed-register.php:705
 msgid "Display NAME box"
 msgstr ""
 
-#: ../classes/ed-register.php:572
+#: ../classes/ed-register.php:712
 msgid "Set NAME box is mandatory box?"
 msgstr ""
 
-#: ../classes/ed-register.php:579
+#: ../classes/ed-register.php:719
 msgid "Select download link for this form."
 msgstr ""
 
-#: ../classes/ed-register.php:603
+#: ../classes/ed-register.php:743
 msgid "Select download group for this form."
 msgstr ""
 
-#: ../cron/cron-add.php:8 ../downloads/downloads-show.php:9
-#: ../recaptcha/recaptcha-add.php:8 ../settings/settings-edit.php:10
-#: ../subscribers/subscribers-show.php:10
-msgid "Click Here"
-msgstr ""
-
-#: ../cron/cron-add.php:23 ../downloads/downloads-edit.php:10
-#: ../downloads/downloads-view.php:10 ../settings/settings-edit.php:23
-msgid "Oops, selected details doesnt exist."
-msgstr ""
-
-#: ../cron/cron-add.php:94 ../settings/settings-edit.php:118
-msgid "Details was successfully updated."
-msgstr ""
-
-#: ../cron/cron-add.php:99 ../settings/settings-edit.php:123
-msgid "Oops, details not update."
-msgstr ""
-
-#: ../cron/cron-add.php:124
-msgid "WordPress Cron"
-msgstr ""
-
-#: ../cron/cron-add.php:126
-msgid "YES (Use WP CRON, Daily refresh)"
-msgstr ""
-
-#: ../cron/cron-add.php:127
-msgid "YES (Use WP CRON, Refresh on every Sunday)"
-msgstr ""
-
-#: ../cron/cron-add.php:128
-msgid "YES (Use WP CRON, Refresh on every Monday)"
-msgstr ""
-
-#: ../cron/cron-add.php:129
-msgid "YES (Use WP CRON, Refresh on every Tuesday)"
-msgstr ""
-
-#: ../cron/cron-add.php:130
-msgid "YES (Use WP CRON, Refresh on every Wednesday)"
-msgstr ""
-
-#: ../cron/cron-add.php:131
-msgid "YES (Use WP CRON, Refresh on every Thursday)"
-msgstr ""
-
-#: ../cron/cron-add.php:132
-msgid "YES (Use WP CRON, Refresh on every Friday)"
-msgstr ""
-
-#: ../cron/cron-add.php:133
-msgid "YES (Use WP CRON, Refresh on every Saturday)"
-msgstr ""
-
-#: ../cron/cron-add.php:134
-msgid "YES (Use WP CRON, Refresh on every Sunday and Wednesday)"
-msgstr ""
-
-#: ../cron/cron-add.php:138
-msgid ""
-"YES : Plugin will use WP CRON option to refresh download URLs. No manual "
-"configuration is required."
-msgstr ""
-
-#: ../cron/cron-add.php:139
-msgid ""
-"NO : Plugin will not use WP CRON option to refresh download URLs you have to "
-"configure CRON JOB in your server using below Cron job URL."
-msgstr ""
-
-#: ../cron/cron-add.php:142
-msgid "Cron job URL"
-msgstr ""
-
-#: ../cron/cron-add.php:144
-msgid ""
-"Please find your cron job URL. This is read only field not able to modify "
-"from admin."
-msgstr ""
-
-#: ../cron/cron-add.php:146 ../settings/settings-edit.php:233
-msgid "Admin mail content"
-msgstr ""
-
-#: ../cron/cron-add.php:148
-msgid ""
-"Enter the mail content for admin. This will send whenever cron URL is "
-"triggered."
-msgstr ""
-
-#: ../cron/cron-add.php:153 ../downloads/downloads-add.php:190
-#: ../downloads/downloads-edit.php:196 ../recaptcha/recaptcha-add.php:107
-msgid "Submit"
-msgstr ""
-
-#: ../cron/cron-add.php:154 ../downloads/downloads-add.php:191
-#: ../downloads/downloads-edit.php:197 ../recaptcha/recaptcha-add.php:108
-#: ../settings/settings-edit.php:262
-msgid "Cancel"
-msgstr ""
-
-#: ../cron/cron-add.php:155 ../downloads/downloads-add.php:192
-#: ../downloads/downloads-edit.php:198 ../downloads/downloads-show.php:163
-#: ../downloads/downloads-view.php:93 ../recaptcha/recaptcha-add.php:109
-#: ../settings/settings-edit.php:263
-#: ../subscribers/subscribers-downloads.php:147
-#: ../subscribers/subscribers-email.php:146
-#: ../subscribers/subscribers-export.php:51
-#: ../subscribers/subscribers-show.php:151
-msgid "Help"
-msgstr ""
-
-#: ../cron/cron-add.php:195
-msgid "Hook name"
-msgstr ""
-
-#: ../cron/cron-add.php:196
-msgid "Actions"
-msgstr ""
-
-#: ../cron/cron-add.php:197
-msgid "Last run"
-msgstr ""
-
-#: ../cron/cron-add.php:198
-msgid "Next download link refresh"
+#: ../classes/ed-shortcode.php:126 ../classes/ed-shortcode.php:129
+msgid "Phone"
 msgstr ""
 
 #: ../downloads/downloads-add.php:46 ../downloads/downloads-edit.php:59
@@ -337,12 +254,12 @@ msgid "Failed to create record. Please contact plugin admin."
 msgstr ""
 
 #: ../downloads/downloads-add.php:113 ../downloads/downloads-edit.php:109
-#: ../settings/settings-edit.php:143
+#: ../settings/settings-edit.php:144
 msgid "Click here"
 msgstr ""
 
 #: ../downloads/downloads-add.php:114 ../downloads/downloads-edit.php:110
-#: ../settings/settings-edit.php:144
+#: ../settings/settings-edit.php:145
 msgid " to view the details"
 msgstr ""
 
@@ -356,13 +273,13 @@ msgid "Download link"
 msgstr ""
 
 #: ../downloads/downloads-add.php:155 ../downloads/downloads-edit.php:151
-#: ../downloads/downloads-show.php:63 ../downloads/downloads-show.php:74
+#: ../downloads/downloads-show.php:54 ../downloads/downloads-show.php:65
 #: ../downloads/downloads-view.php:42
 msgid "Title"
 msgstr ""
 
 #: ../downloads/downloads-add.php:159 ../downloads/downloads-edit.php:155
-#: ../downloads/downloads-show.php:67 ../downloads/downloads-show.php:78
+#: ../downloads/downloads-show.php:58 ../downloads/downloads-show.php:69
 #: ../downloads/downloads-view.php:66
 msgid "Group"
 msgstr ""
@@ -373,6 +290,42 @@ msgstr ""
 
 #: ../downloads/downloads-add.php:181 ../downloads/downloads-edit.php:185
 msgid "URL refresh"
+msgstr ""
+
+#: ../downloads/downloads-add.php:190 ../downloads/downloads-edit.php:196
+msgid "Submit"
+msgstr ""
+
+#: ../downloads/downloads-add.php:191 ../downloads/downloads-edit.php:197
+#: ../security/filter-add.php:81 ../security/recaptcha-add.php:105
+#: ../settings/settings-adminmail.php:119 ../settings/settings-cron.php:117
+#: ../settings/settings-downloadmail.php:103 ../settings/settings-edit.php:313
+#: ../settings/settings-gdpr.php:121 ../settings/settings-general.php:135
+#: ../settings/settings-messages.php:139 ../settings/settings-sample.php:47
+msgid "Cancel"
+msgstr ""
+
+#: ../downloads/downloads-add.php:192 ../downloads/downloads-edit.php:198
+#: ../downloads/downloads-show.php:153 ../downloads/downloads-view.php:93
+#: ../security/filter-add.php:82 ../security/recaptcha-add.php:106
+#: ../security/security.php:14 ../settings/settings-adminmail.php:120
+#: ../settings/settings-cron.php:118 ../settings/settings-downloadmail.php:104
+#: ../settings/settings-edit.php:314 ../settings/settings-gdpr.php:122
+#: ../settings/settings-general.php:136 ../settings/settings-messages.php:140
+#: ../settings/settings-sample.php:48 ../settings/settings.php:15
+#: ../subscribers/subscribers-downloads.php:155
+#: ../subscribers/subscribers-email.php:154
+#: ../subscribers/subscribers-export.php:53
+#: ../subscribers/subscribers-show.php:148
+msgid "Help"
+msgstr ""
+
+#: ../downloads/downloads-edit.php:10 ../downloads/downloads-view.php:10
+#: ../security/filter-add.php:16 ../settings/settings-adminmail.php:9
+#: ../settings/settings-cron.php:9 ../settings/settings-downloadmail.php:9
+#: ../settings/settings-edit.php:12 ../settings/settings-gdpr.php:9
+#: ../settings/settings-general.php:9 ../settings/settings-messages.php:9
+msgid "Oops, selected details doesnt exist."
 msgstr ""
 
 #: ../downloads/downloads-edit.php:65
@@ -387,82 +340,86 @@ msgstr ""
 msgid "Edit download link"
 msgstr ""
 
-#: ../downloads/downloads-show.php:23
-#: ../subscribers/subscribers-downloads.php:20
-#: ../subscribers/subscribers-email.php:19
-#: ../subscribers/subscribers-show.php:24
+#: ../downloads/downloads-show.php:14
+#: ../subscribers/subscribers-downloads.php:21
+#: ../subscribers/subscribers-email.php:20
+#: ../subscribers/subscribers-show.php:14
 msgid "Oops, selected details doesnt exist"
 msgstr ""
 
-#: ../downloads/downloads-show.php:32
-#: ../subscribers/subscribers-downloads.php:29
-#: ../subscribers/subscribers-email.php:28
-#: ../subscribers/subscribers-show.php:34
+#: ../downloads/downloads-show.php:23 ../security/filter-add.php:23
+#: ../subscribers/subscribers-downloads.php:30
+#: ../subscribers/subscribers-email.php:29
+#: ../subscribers/subscribers-show.php:24
 msgid "Selected record was successfully deleted."
 msgstr ""
 
-#: ../downloads/downloads-show.php:48
+#: ../downloads/downloads-show.php:39
 msgid "Download links"
 msgstr ""
 
-#: ../downloads/downloads-show.php:49 ../downloads/downloads-show.php:161
+#: ../downloads/downloads-show.php:40 ../downloads/downloads-show.php:151
 msgid "Add New"
 msgstr ""
 
-#: ../downloads/downloads-show.php:64 ../downloads/downloads-show.php:75
+#: ../downloads/downloads-show.php:55 ../downloads/downloads-show.php:66
 msgid "Link"
 msgstr ""
 
-#: ../downloads/downloads-show.php:65 ../downloads/downloads-show.php:76
+#: ../downloads/downloads-show.php:56 ../downloads/downloads-show.php:67
 msgid "Short Codes"
 msgstr ""
 
-#: ../downloads/downloads-show.php:68 ../downloads/downloads-show.php:79
+#: ../downloads/downloads-show.php:59 ../downloads/downloads-show.php:70
 msgid "Expire"
 msgstr ""
 
-#: ../downloads/downloads-show.php:69 ../downloads/downloads-show.php:80
+#: ../downloads/downloads-show.php:60 ../downloads/downloads-show.php:71
 msgid "Expiration"
 msgstr ""
 
-#: ../downloads/downloads-show.php:96
+#: ../downloads/downloads-show.php:87
 msgid "View"
 msgstr ""
 
-#: ../downloads/downloads-show.php:99
+#: ../downloads/downloads-show.php:90
 msgid "Edit"
 msgstr ""
 
-#: ../downloads/downloads-show.php:102
+#: ../downloads/downloads-show.php:93
 msgid "Delete"
 msgstr ""
 
-#: ../downloads/downloads-show.php:128
-#: ../subscribers/subscribers-downloads.php:112
-#: ../subscribers/subscribers-email.php:111
-#: ../subscribers/subscribers-show.php:116
+#: ../downloads/downloads-show.php:117
+#: ../subscribers/subscribers-downloads.php:119
+#: ../subscribers/subscribers-email.php:118
+#: ../subscribers/subscribers-show.php:112
 msgid "No records available"
 msgstr ""
 
-#: ../downloads/downloads-show.php:145
-#: ../subscribers/subscribers-downloads.php:129
-#: ../subscribers/subscribers-email.php:128
-#: ../subscribers/subscribers-show.php:133
+#: ../downloads/downloads-show.php:134
+#: ../subscribers/subscribers-downloads.php:136
+#: ../subscribers/subscribers-email.php:135
+#: ../subscribers/subscribers-show.php:129
 msgid "&laquo;"
 msgstr ""
 
-#: ../downloads/downloads-show.php:146
-#: ../subscribers/subscribers-downloads.php:130
-#: ../subscribers/subscribers-email.php:129
-#: ../subscribers/subscribers-show.php:134
+#: ../downloads/downloads-show.php:135
+#: ../subscribers/subscribers-downloads.php:137
+#: ../subscribers/subscribers-email.php:136
+#: ../subscribers/subscribers-show.php:130
 msgid "&raquo;"
 msgstr ""
 
-#: ../downloads/downloads-show.php:162
-#: ../subscribers/subscribers-downloads.php:146
-#: ../subscribers/subscribers-email.php:145
-#: ../subscribers/subscribers-export.php:50
-#: ../subscribers/subscribers-show.php:150
+#: ../downloads/downloads-show.php:152 ../downloads/downloads-view.php:82
+msgid "Short Code"
+msgstr ""
+
+#: ../downloads/downloads-show.php:154
+#: ../subscribers/subscribers-downloads.php:154
+#: ../subscribers/subscribers-email.php:153
+#: ../subscribers/subscribers-export.php:52
+#: ../subscribers/subscribers-show.php:147
 msgid "Export Emails"
 msgstr ""
 
@@ -498,24 +455,28 @@ msgstr ""
 msgid "Download Id"
 msgstr ""
 
-#: ../downloads/downloads-view.php:82
-msgid "Short Code"
-msgstr ""
-
 #: ../downloads/downloads-view.php:86
 msgid "Guid Code"
 msgstr ""
 
 #: ../downloads/downloads-view.php:92
-#: ../subscribers/subscribers-downloads.php:145
-#: ../subscribers/subscribers-email.php:144
-#: ../subscribers/subscribers-export.php:49
-#: ../subscribers/subscribers-show.php:149
+#: ../subscribers/subscribers-downloads.php:153
+#: ../subscribers/subscribers-email.php:152
+#: ../subscribers/subscribers-export.php:51
+#: ../subscribers/subscribers-show.php:146
 msgid "Back"
 msgstr ""
 
-#: ../job/ed-download.php:71
+#: ../job/ed-download.php:78
 msgid "Your download should automatically begin in a few seconds."
+msgstr ""
+
+#: ../job/ed-download.php:79
+msgid "If download not start after "
+msgstr ""
+
+#: ../job/ed-download.php:85
+msgid "Your download should automatically begin in a few seconds. "
 msgstr ""
 
 #: ../job/ed-export.php:26
@@ -530,139 +491,432 @@ msgstr ""
 msgid "Unexpected url submit has been detected. Request is not posted."
 msgstr ""
 
-#: ../recaptcha/recaptcha-add.php:36
-msgid "Captcha details successfully updated."
+#: ../security/filter-add.php:33
+msgid "Please enter valid input."
 msgstr ""
 
-#: ../recaptcha/recaptcha-add.php:87
-msgid "Google reCaptcha Setup"
+#: ../security/filter-add.php:39
+msgid "Detail was successfully inserted."
 msgstr ""
 
-#: ../recaptcha/recaptcha-add.php:90
-msgid "reCaptcha option"
+#: ../security/filter-add.php:61
+msgid "Blocked Details"
 msgstr ""
 
-#: ../recaptcha/recaptcha-add.php:95
+#: ../security/filter-add.php:62
+msgid ""
+"Seeing spam from particular domains? Enter domains/email/ip names that you "
+"want to block here."
+msgstr ""
+
+#: ../security/filter-add.php:80 ../security/recaptcha-add.php:104
+#: ../settings/settings-adminmail.php:118 ../settings/settings-cron.php:116
+#: ../settings/settings-downloadmail.php:102 ../settings/settings-gdpr.php:120
+#: ../settings/settings-general.php:134 ../settings/settings-messages.php:138
+#: ../settings/settings-sample.php:46
+msgid "Save Changes"
+msgstr ""
+
+#: ../security/filter-add.php:105 ../security/filter-add.php:114
+msgid "No"
+msgstr ""
+
+#: ../security/filter-add.php:106 ../security/filter-add.php:115
+msgid "Blocked Type"
+msgstr ""
+
+#: ../security/filter-add.php:107 ../security/filter-add.php:116
+msgid "Blocked Value"
+msgstr ""
+
+#: ../security/filter-add.php:108 ../security/filter-add.php:117
+msgid "Created"
+msgstr ""
+
+#: ../security/filter-add.php:109 ../security/filter-add.php:118
+#: ../subscribers/subscribers-downloads.php:65
+#: ../subscribers/subscribers-downloads.php:76
+#: ../subscribers/subscribers-email.php:64
+#: ../subscribers/subscribers-email.php:75
+#: ../subscribers/subscribers-export.php:21
+#: ../subscribers/subscribers-export.php:29
+#: ../subscribers/subscribers-show.php:58
+#: ../subscribers/subscribers-show.php:68
+msgid "Action"
+msgstr ""
+
+#: ../security/filter-add.php:150
+msgid "No records available."
+msgstr ""
+
+#: ../security/filter-add.php:162
+msgid " &lt;&lt; "
+msgstr ""
+
+#: ../security/filter-add.php:163
+msgid " &gt;&gt; "
+msgstr ""
+
+#: ../security/recaptcha-add.php:18
+msgid "reCaptcha details successfully updated."
+msgstr ""
+
+#: ../security/recaptcha-add.php:67 ../security/security.php:12
+msgid "reCaptcha"
+msgstr ""
+
+#: ../security/recaptcha-add.php:68
 msgid "Add reCaptcha in the download link form."
 msgstr ""
 
-#: ../recaptcha/recaptcha-add.php:97
+#: ../security/recaptcha-add.php:81
 msgid "reCaptcha Secret key"
 msgstr ""
 
-#: ../recaptcha/recaptcha-add.php:99
+#: ../security/recaptcha-add.php:82
 msgid "Please enter your secret key for reCaptcha."
 msgstr ""
 
-#: ../recaptcha/recaptcha-add.php:101
+#: ../security/recaptcha-add.php:92
 msgid "reCaptcha Site key"
 msgstr ""
 
-#: ../recaptcha/recaptcha-add.php:103
+#: ../security/recaptcha-add.php:93
 msgid "Please enter your site key for reCaptcha."
 msgstr ""
 
-#: ../settings/settings-edit.php:101
-msgid "Please enter sender of notifications from name."
+#: ../security/security.php:11
+msgid "Security Filter"
 msgstr ""
 
-#: ../settings/settings-edit.php:107
-msgid "Please enter sender of notifications from email."
+#: ../security/security.php:13 ../settings/settings.php:14
+msgid "FAQ"
 msgstr ""
 
-#: ../settings/settings-edit.php:165
-msgid "Sender of notifications"
+#: ../settings/settings-adminmail.php:43 ../settings/settings-cron.php:41
+#: ../settings/settings-downloadmail.php:47 ../settings/settings-edit.php:119
+#: ../settings/settings-gdpr.php:43 ../settings/settings-general.php:46
+#: ../settings/settings-messages.php:49
+msgid "Details was successfully updated."
 msgstr ""
 
-#: ../settings/settings-edit.php:166
-msgid ""
-"Choose a FROM name and FROM email address for all emails from this plugin."
-msgstr ""
-
-#: ../settings/settings-edit.php:175
-msgid "Mail type"
-msgstr ""
-
-#: ../settings/settings-edit.php:176
-msgid ""
-"Option 1 & 2 is to send mails with default Wordpress method wp_mail(). "
-"Option 3 & 4 is to send mails with PHP method mail()"
-msgstr ""
-
-#: ../settings/settings-edit.php:190
-msgid "Download link mail subject"
-msgstr ""
-
-#: ../settings/settings-edit.php:191
-msgid ""
-"Enter the mail subject for download link mail. This will send whenever user "
-"is requested download link."
-msgstr ""
-
-#: ../settings/settings-edit.php:197
-msgid "Download link mail content"
-msgstr ""
-
-#: ../settings/settings-edit.php:198
-msgid ""
-"Enter the mail content for download link mail. This will send whenever user "
-"is requested download link."
-msgstr ""
-
-#: ../settings/settings-edit.php:207
+#: ../settings/settings-adminmail.php:75 ../settings/settings-edit.php:209
 msgid "Mail to admin"
 msgstr ""
 
-#: ../settings/settings-edit.php:208
+#: ../settings/settings-adminmail.php:76 ../settings/settings-edit.php:210
 msgid ""
 "To send admin notifications for new download email, This option must be set "
 "to YES."
 msgstr ""
 
-#: ../settings/settings-edit.php:219
+#: ../settings/settings-adminmail.php:87 ../settings/settings-edit.php:221
 msgid "Admin email addresses"
 msgstr ""
 
-#: ../settings/settings-edit.php:220
+#: ../settings/settings-adminmail.php:88 ../settings/settings-edit.php:222
 msgid ""
 "Enter the admin email addresses that should receive notifications (separate "
 "by comma)."
 msgstr ""
 
-#: ../settings/settings-edit.php:226
+#: ../settings/settings-adminmail.php:96 ../settings/settings-edit.php:228
 msgid "Admin mail subject"
 msgstr ""
 
-#: ../settings/settings-edit.php:227
+#: ../settings/settings-adminmail.php:97 ../settings/settings-edit.php:229
 msgid ""
 "Enter the subject for admin mail. This will send whenever new download email "
 "sent to requester."
 msgstr ""
 
-#: ../settings/settings-edit.php:234
+#: ../settings/settings-adminmail.php:105 ../settings/settings-cron.php:104
+#: ../settings/settings-edit.php:235
+msgid "Admin mail content"
+msgstr ""
+
+#: ../settings/settings-adminmail.php:106 ../settings/settings-edit.php:236
 msgid ""
 "Enter the mail content for admin. This will send whenever new download email "
 "sent to requester."
 msgstr ""
 
-#: ../settings/settings-edit.php:242
+#: ../settings/settings-cron.php:73
+msgid "WordPress Cron"
+msgstr ""
+
+#: ../settings/settings-cron.php:75
+msgid ""
+"YES : Plugin will use WP CRON option to refresh download URLs. No manual "
+"configuration is required."
+msgstr ""
+
+#: ../settings/settings-cron.php:76
+msgid ""
+"NO : Plugin will not use WP CRON option to refresh download URLs you have to "
+"configure CRON JOB in your server using below Cron job URL."
+msgstr ""
+
+#: ../settings/settings-cron.php:80
+msgid "YES (Use WP CRON, Daily refresh)"
+msgstr ""
+
+#: ../settings/settings-cron.php:81
+msgid "YES (Use WP CRON, Refresh on every Sunday)"
+msgstr ""
+
+#: ../settings/settings-cron.php:82
+msgid "YES (Use WP CRON, Refresh on every Monday)"
+msgstr ""
+
+#: ../settings/settings-cron.php:83
+msgid "YES (Use WP CRON, Refresh on every Tuesday)"
+msgstr ""
+
+#: ../settings/settings-cron.php:84
+msgid "YES (Use WP CRON, Refresh on every Wednesday)"
+msgstr ""
+
+#: ../settings/settings-cron.php:85
+msgid "YES (Use WP CRON, Refresh on every Thursday)"
+msgstr ""
+
+#: ../settings/settings-cron.php:86
+msgid "YES (Use WP CRON, Refresh on every Friday)"
+msgstr ""
+
+#: ../settings/settings-cron.php:87
+msgid "YES (Use WP CRON, Refresh on every Saturday)"
+msgstr ""
+
+#: ../settings/settings-cron.php:88
+msgid "YES (Use WP CRON, Refresh on every Sunday and Wednesday)"
+msgstr ""
+
+#: ../settings/settings-cron.php:95
+msgid "Cron job URL"
+msgstr ""
+
+#: ../settings/settings-cron.php:96
+msgid ""
+"Please find your cron job URL. This is read only field not able to modify "
+"from admin."
+msgstr ""
+
+#: ../settings/settings-cron.php:105
+msgid ""
+"Enter the mail content for admin. This will send whenever cron URL is "
+"triggered."
+msgstr ""
+
+#: ../settings/settings-cron.php:149
+msgid "Hook name"
+msgstr ""
+
+#: ../settings/settings-cron.php:150
+msgid "Actions"
+msgstr ""
+
+#: ../settings/settings-cron.php:151
+msgid "Last run"
+msgstr ""
+
+#: ../settings/settings-cron.php:152
+msgid "Next download link refresh"
+msgstr ""
+
+#: ../settings/settings-downloadmail.php:34
+msgid "Please enter download link mail subject."
+msgstr ""
+
+#: ../settings/settings-downloadmail.php:39
+msgid "Please enter download link mail content."
+msgstr ""
+
+#: ../settings/settings-downloadmail.php:79 ../settings/settings-edit.php:191
+msgid "Download link mail subject"
+msgstr ""
+
+#: ../settings/settings-downloadmail.php:80 ../settings/settings-edit.php:192
+msgid ""
+"Enter the mail subject for download link mail. This will send whenever user "
+"is requested download link."
+msgstr ""
+
+#: ../settings/settings-downloadmail.php:89 ../settings/settings-edit.php:199
+msgid "Download link mail content"
+msgstr ""
+
+#: ../settings/settings-downloadmail.php:90
+msgid ""
+"Enter the mail content for download link mail. This will send whenever user "
+"requested the download link."
+msgstr ""
+
+#: ../settings/settings-edit.php:102
+msgid "Please enter sender of notifications from name."
+msgstr ""
+
+#: ../settings/settings-edit.php:108
+msgid "Please enter sender of notifications from email."
+msgstr ""
+
+#: ../settings/settings-edit.php:124
+msgid "Oops, details not update."
+msgstr ""
+
+#: ../settings/settings-edit.php:166 ../settings/settings-general.php:78
+msgid "Sender of notifications"
+msgstr ""
+
+#: ../settings/settings-edit.php:167 ../settings/settings-general.php:79
+msgid ""
+"Choose a FROM name and FROM email address for all emails from this plugin."
+msgstr ""
+
+#: ../settings/settings-edit.php:176 ../settings/settings-general.php:88
+msgid "Mail type"
+msgstr ""
+
+#: ../settings/settings-edit.php:177 ../settings/settings-general.php:89
+msgid ""
+"Option 1 & 2 is to send mails with default Wordpress method wp_mail(). "
+"Option 3 & 4 is to send mails with PHP method mail()"
+msgstr ""
+
+#: ../settings/settings-edit.php:200
+msgid ""
+"Enter the mail content for download link mail. This will send whenever user "
+"is requested download link."
+msgstr ""
+
+#: ../settings/settings-edit.php:244 ../settings/settings-messages.php:81
 msgid "Expired link content"
 msgstr ""
 
-#: ../settings/settings-edit.php:243
+#: ../settings/settings-edit.php:245
 msgid "Enter the content to display if download link has expired."
 msgstr ""
 
-#: ../settings/settings-edit.php:249
+#: ../settings/settings-edit.php:251 ../settings/settings-messages.php:90
 msgid "Invalid link content"
 msgstr ""
 
-#: ../settings/settings-edit.php:250
+#: ../settings/settings-edit.php:252
 msgid "Enter the content to display if download link is invalid."
 msgstr ""
 
-#: ../settings/settings-edit.php:261
+#: ../settings/settings-edit.php:258 ../settings/settings-messages.php:99
+msgid "Successful message"
+msgstr ""
+
+#: ../settings/settings-edit.php:259
+msgid "Message to display after download link form submission successfully."
+msgstr ""
+
+#: ../settings/settings-edit.php:266 ../settings/settings-gdpr.php:75
+msgid "Save downloader name/email"
+msgstr ""
+
+#: ../settings/settings-edit.php:267
+msgid ""
+"Set NO if you do not want to save downloader name and email, instead plugin "
+"use default name and email to count the download history. This option is "
+"useful for GDPR privacy policy."
+msgstr ""
+
+#: ../settings/settings-edit.php:278 ../settings/settings-general.php:102
+msgid "Auto delete download history"
+msgstr ""
+
+#: ../settings/settings-edit.php:279 ../settings/settings-general.php:103
+msgid ""
+"Automatically delete download history after specific number of days. Plugin "
+"use WP CRON option to delete the history."
+msgstr ""
+
+#: ../settings/settings-edit.php:295 ../settings/settings-general.php:119
+msgid "Show direct download"
+msgstr ""
+
+#: ../settings/settings-edit.php:296 ../settings/settings-general.php:120
+msgid ""
+"This option is to SHOW or HIDE direct download link in the download page. "
+"Set NO if you dont like to show direct download link to your users."
+msgstr ""
+
+#: ../settings/settings-edit.php:312
 msgid "Save Settings"
+msgstr ""
+
+#: ../settings/settings-gdpr.php:76
+msgid ""
+"Set NO if you do not want to save downloader name and email, instead plugin "
+"use default name and email to count the download history."
+msgstr ""
+
+#: ../settings/settings-gdpr.php:87
+msgid "Enable GDPR"
+msgstr ""
+
+#: ../settings/settings-gdpr.php:88
+msgid ""
+"To enable GDPR check box in the download form, this option must be set to "
+"YES. Name and email will be saved only if the above save downloader option "
+"is YES and user select the GDPR check box in the download form if GDPR is "
+"enabled."
+msgstr ""
+
+#: ../settings/settings-gdpr.php:99
+msgid "GDPR text"
+msgstr ""
+
+#: ../settings/settings-gdpr.php:100
+msgid "Text to display after GDPR checkbox in the download form."
+msgstr ""
+
+#: ../settings/settings-gdpr.php:108
+msgid "GDPR description"
+msgstr ""
+
+#: ../settings/settings-gdpr.php:109
+msgid "Detailed description for GDPR checkbox."
+msgstr ""
+
+#: ../settings/settings-messages.php:82
+msgid "Message to display if download link has expired."
+msgstr ""
+
+#: ../settings/settings-messages.php:91
+msgid "Message to display if download link is invalid."
+msgstr ""
+
+#: ../settings/settings-messages.php:100
+msgid "Message to display if download link form submitted successfully."
+msgstr ""
+
+#: ../settings/settings-messages.php:108
+msgid "Too fast message"
+msgstr ""
+
+#: ../settings/settings-messages.php:109
+msgid "Message to display if user trying to submit download form too fast."
+msgstr ""
+
+#: ../settings/settings-messages.php:117
+msgid "Blocked message 1"
+msgstr ""
+
+#: ../settings/settings-messages.php:118
+msgid "Message to display if Email/Domain/IP is blocked by plugin security."
+msgstr ""
+
+#: ../settings/settings-messages.php:126
+msgid "Blocked message 2"
+msgstr ""
+
+#: ../settings/settings-messages.php:127
+msgid "Message to display if entered name or email is in filter list."
 msgstr ""
 
 #: ../settings/settings-sync.php:16
@@ -670,95 +924,108 @@ msgid "Table sync completed successfully."
 msgstr ""
 
 #: ../settings/settings-sync.php:29
-msgid "Sync plugin tables"
+msgid "Database Update Required"
 msgstr ""
 
-#: ../settings/settings-sync.php:33
-msgid "Click to sync tables"
+#: ../settings/settings-sync.php:37
+msgid "Update plugin table"
 msgstr ""
 
-#: ../subscribers/subscribers-downloads.php:45
+#: ../settings/settings.php:9
+msgid "General"
+msgstr ""
+
+#: ../settings/settings.php:10
+msgid "Download Mail"
+msgstr ""
+
+#: ../settings/settings.php:11
+msgid "Admin Mail"
+msgstr ""
+
+#: ../settings/settings.php:12
+msgid "Messages"
+msgstr ""
+
+#: ../settings/settings.php:13
+msgid "Cron Details"
+msgstr ""
+
+#: ../settings/settings.php:16
+msgid "GDPR Consent"
+msgstr ""
+
+#: ../subscribers/subscribers-downloads.php:46
 msgid "Download History (By Download URL)"
 msgstr ""
 
-#: ../subscribers/subscribers-downloads.php:59
-#: ../subscribers/subscribers-downloads.php:70
-#: ../subscribers/subscribers-email.php:58
-#: ../subscribers/subscribers-email.php:69
+#: ../subscribers/subscribers-downloads.php:60
+#: ../subscribers/subscribers-downloads.php:71
+#: ../subscribers/subscribers-email.php:59
+#: ../subscribers/subscribers-email.php:70
+#: ../subscribers/subscribers-show.php:53
 #: ../subscribers/subscribers-show.php:63
-#: ../subscribers/subscribers-show.php:73
 msgid "Email"
-msgstr ""
-
-#: ../subscribers/subscribers-downloads.php:61
-#: ../subscribers/subscribers-downloads.php:72
-#: ../subscribers/subscribers-email.php:60
-#: ../subscribers/subscribers-email.php:71
-#: ../subscribers/subscribers-show.php:65
-#: ../subscribers/subscribers-show.php:75
-msgid "Downloaded"
 msgstr ""
 
 #: ../subscribers/subscribers-downloads.php:62
 #: ../subscribers/subscribers-downloads.php:73
 #: ../subscribers/subscribers-email.php:61
 #: ../subscribers/subscribers-email.php:72
+#: ../subscribers/subscribers-show.php:55
+#: ../subscribers/subscribers-show.php:65
+msgid "Downloaded"
+msgstr ""
+
+#: ../subscribers/subscribers-downloads.php:63
+#: ../subscribers/subscribers-downloads.php:74
+#: ../subscribers/subscribers-email.php:62
+#: ../subscribers/subscribers-email.php:73
+#: ../subscribers/subscribers-show.php:56
 #: ../subscribers/subscribers-show.php:66
-#: ../subscribers/subscribers-show.php:76
 msgid "Download Title"
 msgstr ""
 
-#: ../subscribers/subscribers-downloads.php:64
 #: ../subscribers/subscribers-downloads.php:75
-#: ../subscribers/subscribers-email.php:63
-#: ../subscribers/subscribers-email.php:74
-#: ../subscribers/subscribers-export.php:20
-#: ../subscribers/subscribers-export.php:28
-#: ../subscribers/subscribers-show.php:68
-#: ../subscribers/subscribers-show.php:78
-msgid "Action"
-msgstr ""
-
-#: ../subscribers/subscribers-downloads.php:74
 msgid "Downloads "
 msgstr ""
 
-#: ../subscribers/subscribers-email.php:44
+#: ../subscribers/subscribers-email.php:45
 msgid "Download History (By Email)"
 msgstr ""
 
-#: ../subscribers/subscribers-export.php:12
+#: ../subscribers/subscribers-export.php:13
 msgid "Export email address in csv format"
-msgstr ""
-
-#: ../subscribers/subscribers-export.php:17
-#: ../subscribers/subscribers-export.php:25
-msgid "Sno"
 msgstr ""
 
 #: ../subscribers/subscribers-export.php:18
 #: ../subscribers/subscribers-export.php:26
-msgid "Export option"
+msgid "Sno"
 msgstr ""
 
 #: ../subscribers/subscribers-export.php:19
 #: ../subscribers/subscribers-export.php:27
+msgid "Export option"
+msgstr ""
+
+#: ../subscribers/subscribers-export.php:20
+#: ../subscribers/subscribers-export.php:28
 msgid "Total email"
 msgstr ""
 
-#: ../subscribers/subscribers-export.php:34
+#: ../subscribers/subscribers-export.php:35
 msgid "Export unique email address."
 msgstr ""
 
-#: ../subscribers/subscribers-export.php:36
-#: ../subscribers/subscribers-export.php:42
+#: ../subscribers/subscribers-export.php:37
+#: ../subscribers/subscribers-export.php:43
 msgid "Click to export csv"
 msgstr ""
 
-#: ../subscribers/subscribers-export.php:40
+#: ../subscribers/subscribers-export.php:41
 msgid "Export all email address with download details."
 msgstr ""
 
-#: ../subscribers/subscribers-show.php:50
+#: ../subscribers/subscribers-show.php:40
 msgid "Download History (Full List)"
 msgstr ""

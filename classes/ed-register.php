@@ -6,7 +6,7 @@ class ed_cls_registerhook
 	{
 		global $wpdb;
 		
-		add_option('email-download-link', "1.6.1");
+		add_option('email-download-link', "2.7");
 		
 		$charset_collate = '';
 		$charset_collate = $wpdb->get_charset_collate();
@@ -21,6 +21,8 @@ class ed_cls_registerhook
 									ed_email_downloadstatus VARCHAR(255) NOT NULL default 'Pending',
 									ed_email_downloadid VARCHAR(255) NOT NULL,
 									ed_email_form_guid VARCHAR(255) NOT NULL,
+									ed_email_ip VARCHAR(100) NOT NULL default '0',
+									ed_email_phone VARCHAR(100) NOT NULL default '0',
 									PRIMARY KEY  (ed_email_id)
 									) $charset_collate;
 								CREATE TABLE {$wpdb->prefix}ed_downloadform (
@@ -48,7 +50,7 @@ class ed_cls_registerhook
 									ed_c_adminemail VARCHAR(255) NOT NULL,
 									ed_c_adminmailsubject VARCHAR(255) NOT NULL,
 									ed_c_adminmailcontant TEXT NULL,
-									ed_c_usermailoption VARCHAR(255) NOT NULL,
+									ed_c_usermailoption VARCHAR(255) NOT NULL default 'YES',
 									ed_c_usermailsubject VARCHAR(255) NOT NULL,
 									ed_c_usermailcontant TEXT NULL,
 									ed_c_downloadstart VARCHAR(255) NOT NULL,
@@ -59,10 +61,27 @@ class ed_cls_registerhook
 									ed_c_cronmailcontent VARCHAR(255) NOT NULL,
 									ed_c_expiredlinkcontant TEXT NULL,
 									ed_c_invalidlinkcontant TEXT NULL,
-									ed_c_privacyconditionslink TEXT NULL,
-									PRIMARY KEY  (ed_c_id)
+									ed_c_savenameemail VARCHAR(10) NOT NULL default 'YES',
+									ed_c_successmessage VARCHAR(255) NOT NULL default 'Download link sent successfully to your email address.',
+									ed_c_deletehistory INT unsigned NOT NULL default 7,
+									ed_c_dowloadlink VARCHAR(10) NOT NULL default 'NO',
+									ed_c_toofastmessage VARCHAR(255) NOT NULL default 'You are trying to submit too fast. try again in 1 minute.',
+									ed_c_blockedmessage1 VARCHAR(255) NOT NULL default 'Your submission is not accepted due to security reason. Please contact admin.',
+									ed_c_blockedmessage2 VARCHAR(255) NOT NULL default 'Entered name or email contains a word that is not allowed. Please contact admin.',
+									ed_c_gdprstatus VARCHAR(10) NOT NULL default 'NO',
+									ed_c_gdprlink TEXT NULL,
+									ed_c_gdprmessage TEXT NULL,
+									PRIMARY KEY (ed_c_id)
 								) $charset_collate;
-							";
+							    CREATE TABLE {$wpdb->prefix}ed_filter (
+							  		ed_blocked_id INT unsigned NOT NULL AUTO_INCREMENT,
+							  		ed_blocked_guid VARCHAR(255) NOT NULL,
+							  		ed_blocked_type varchar(50) NOT NULL,
+							  		ed_blocked_value VARCHAR(255) NOT NULL,
+							  		ed_blocked_created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, 
+							  		PRIMARY KEY (ed_blocked_id)
+								) $charset_collate;
+								";
 							
 		require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 		dbDelta( $es_default_tables );
@@ -82,7 +101,7 @@ class ed_cls_registerhook
 		
 		// add error in to array variable
         if($ed_missing_tables) {
-			$errors[] = __('These tables could not be created on installation ' . implode(', ',$missingtables), 'email-download-link');
+			$errors[] = __('These tables could not be created on installation ' . implode(', ',$ed_missing_tables), 'email-download-link');
             $ed_has_errors=true;
         }
 		
@@ -94,6 +113,7 @@ class ed_cls_registerhook
 		else {
 			ed_cls_default::ed_pluginconfig_default();
 			ed_cls_default::ed_downloads_default();
+			ed_cls_default::ed_filter_default();
 		}
 		
 		if ( ! is_network_admin() && ! isset( $_GET['activate-multi'] ) ) {
@@ -118,22 +138,55 @@ class ed_cls_registerhook
 		add_submenu_page('email-download-link', __( 'Email download link', 'email-download-link' ), 
 			__( 'Downloads', 'email-download-link' ), "manage_options", 'ed-downloads', array( 'ed_cls_intermediate', 'ed_downloads' ));
 			
-		add_submenu_page('email-download-link', __( 'Email download link', 'email-download-link' ), 
-			__( 'Cron Details', 'email-download-link' ), "manage_options", 'ed-cron', array( 'ed_cls_intermediate', 'ed_cron' ));
+		//add_submenu_page('email-download-link', __( 'Email download link', 'email-download-link' ), 
+		//	__( 'Cron Details', 'email-download-link' ), "manage_options", 'ed-cron', array( 'ed_cls_intermediate', 'ed_cron' ));
 			
 		add_submenu_page('email-download-link', __( 'Email download link', 'email-download-link' ), 
 			__( 'Settings', 'email-download-link' ), "manage_options", 'ed-settings', array( 'ed_cls_intermediate', 'ed_settings' ));
 			
 		add_submenu_page('email-download-link', __( 'Email download link', 'email-download-link' ), 
-			__( 'Download History', 'email-download-link' ), "manage_options", 'ed-downloadhistory', array( 'ed_cls_intermediate', 'ed_downloadhistory' ));
+			__( 'History', 'email-download-link' ), "manage_options", 'ed-downloadhistory', array( 'ed_cls_intermediate', 'ed_downloadhistory' ));
+			
+		//add_submenu_page('email-download-link', __( 'Email download link', 'email-download-link' ), 
+		//	__( 'reCAPTCHA', 'email-download-link' ), "manage_options", 'ed-recaptcha', array( 'ed_cls_intermediate', 'ed_recaptcha' ));
 			
 		add_submenu_page('email-download-link', __( 'Email download link', 'email-download-link' ), 
-			__( 'Google reCAPTCHA', 'email-download-link' ), "manage_options", 'ed-recaptcha', array( 'ed_cls_intermediate', 'ed_recaptcha' ));
+			__( 'Security', 'email-download-link' ), "manage_options", 'ed-security', array( 'ed_cls_intermediate', 'ed_security' ));
 	}
 	
 	public static function ed_widget_loading() {
 		register_widget( 'ed_widget_register' );
-	}	
+	}
+	
+	public static function ed_load_scripts_front() {
+		wp_enqueue_script( 'email-download-link', ED_URL . 'inc/email-download-link.js', array( 'jquery' ), '2.2', false );
+		
+		$ed_data = array(
+			'messages' => array(
+				'ed_required_field'    => __( 'Please fill in the required field.', 'email-download-link' ),
+				'ed_invalid_name'      => __( 'Name seems invalid.', 'email-download-link' ),
+				'ed_invalid_email'     => __( 'Email address seems invalid.', 'email-download-link' ),
+				'ed_unexpected_error'  => __( 'Oops.. Unexpected error occurred.', 'email-download-link' ),
+				'ed_sent_successfull'  => __( 'Download link sent successfully to your email address.', 'email-download-link' ),
+				'ed_select_downloads'  => __( 'Please select your downloads.', 'email-download-link' ),
+				'ed_invalid_captcha'   => __( 'Robot verification failed, please try again.', 'email-download-link' ),
+				'ed_toofast_message'   => __( 'You are trying to submit too fast. try again in 1 minute.', 'email-download-link' ),
+				'ed_blocked_message1'  => __( 'Your submission is not accepted due to security reason. Please contact admin.', 'email-download-link' ),
+				'ed_blocked_message2'  => __( 'Entered name or email contains a word that is not allowed. Please contact admin.', 'email-download-link' )
+			),
+			'ed_ajax_url' => admin_url( 'admin-ajax.php' ),
+		);
+		
+		wp_localize_script( 'email-download-link', 'ed_data', $ed_data );
+	}
+	
+	public static function ed_load_style_front() {
+		echo '<style>';
+		echo '.ed_form_message.success { color: #008000; }';
+		echo '.ed_form_message.error { color: #ff0000; }';
+		echo '.ed_form_message.boterror { color: #ff0000; }';
+		echo '</style>';
+	}
 	
 	public static function ed_load_scripts() {
 		if( !empty( $_GET['page'] ) )
@@ -178,15 +231,18 @@ class ed_cls_registerhook
 					wp_localize_script( 'ed-downloadhistory', 'ed_downloadhistory_script', $ed_script_params );
 					break;
 					
-				case 'ed-recaptcha':
-					wp_register_script( 'ed-recaptcha', ED_URL . 'recaptcha/recaptcha.js', '', '', true );
-					wp_enqueue_script( 'ed-recaptcha' );
+				case 'ed-security':
+					wp_register_script( 'ed-security', ED_URL . 'security/security.js', '', '', true );
+					wp_enqueue_script( 'ed-security' );
 					$ed_script_params = array(
-						'ed_recaptcha_sitekey_add'		=> _x( 'Please enter valid site key value.', 'ed-recaptcha-script', 'email-download-link' ),
-						'ed_recaptcha_secretkey_add'	=> _x( 'Please enter valid secret key value.', 'ed-recaptcha-script', 'email-download-link' ),
-						'ed_recaptcha_save_all'			=> _x( 'Do you want to update all the details.', 'ed-recaptcha-script', 'email-download-link' ),
+						'ed_recaptcha_sitekey_add'	=> _x( 'Please enter valid site key value.', 'ed-recaptcha-script', 'email-download-link' ),
+						'ed_recaptcha_secretkey_add'=> _x( 'Please enter valid secret key value.', 'ed-recaptcha-script', 'email-download-link' ),
+						'ed_recaptcha_save_all'		=> _x( 'Do you want to update all the details.', 'ed-recaptcha-script', 'email-download-link' ),
+						'ed_blocked_type'			=> _x( 'Please select blocked type.', 'ed-recaptcha-script', 'email-download-link' ),
+						'ed_blocked_value'			=> _x( 'Please enter blocked value.', 'ed-recaptcha-script', 'email-download-link' ),
+						'ed_delete_record'  		=> _x( 'Do you want to delete this record?', 'ed-recaptcha-script', 'email-download-link' ),
 					);
-					wp_localize_script( 'ed-recaptcha', 'ed_recaptcha_script', $ed_script_params );
+					wp_localize_script( 'ed-security', 'ed_security_script', $ed_script_params );
 					break;
 			}
 		}
@@ -194,9 +250,34 @@ class ed_cls_registerhook
 	}
 	
 	public static function ed_email_download_link_db_update() {
-		if ( (get_option( 'email-download-link') === false) || (get_option( 'email-download-link') == '1.0') || (get_option( 'email-download-link') == '1.6') ) {
+		if ( (get_option( 'email-download-link') === false) || (get_option('email-download-link') == '1.0') || (get_option('email-download-link') == '1.6') ) {
 			ed_cls_registerhook::ed_activation();
 			ed_cls_registerhook::ed_email_download_link_db_for_1_6();
+		}
+		
+		if (get_option('email-download-link') == '1.6.1') {
+			ed_cls_registerhook::ed_activation();
+			ed_cls_registerhook::ed_email_download_link_db_for_2_1();
+		}
+		
+		if (get_option('email-download-link') == '2.1') {
+			ed_cls_registerhook::ed_activation();
+			ed_cls_registerhook::ed_email_download_link_db_for_2_3();
+		}
+		
+		if (get_option('email-download-link') == '2.3') {
+			ed_cls_registerhook::ed_activation();
+			ed_cls_registerhook::ed_email_download_link_db_for_2_4();
+		}
+		
+		if (get_option('email-download-link') == '2.4') {
+			ed_cls_registerhook::ed_activation();
+			ed_cls_registerhook::ed_email_download_link_db_for_2_5();
+		}
+		
+		if (get_option('email-download-link') == '2.5') {
+			ed_cls_registerhook::ed_activation();
+			ed_cls_registerhook::ed_email_download_link_db_for_2_7();
 		}
 	}
 	
@@ -205,6 +286,37 @@ class ed_cls_registerhook
 		$sSql = "UPDATE ".$wpdb->prefix."ed_downloadform SET `ed_form_group` = 'Default' where ed_form_group=''";
 		$wpdb->query( $sSql );
 		update_option( 'email-download-link', '1.6.1' );
+	}
+	
+	public static function ed_email_download_link_db_for_2_1() {
+		global $wpdb;
+		$sSql = "UPDATE ".$wpdb->prefix."ed_pluginconfig SET `ed_c_savenameemail` = 'YES' where ed_c_id=1";
+		$wpdb->query( $sSql );
+		update_option( 'email-download-link', '2.1' );
+	}
+	
+	public static function ed_email_download_link_db_for_2_3() {
+		global $wpdb;
+		$msg = "Download link sent successfully to your email address. Kindly check your mailbox.";
+		$msg .= "If you not see the email within a few minutes, check the spam/junk folder.";
+		$sSql = "UPDATE ".$wpdb->prefix."ed_pluginconfig SET `ed_c_successmessage` = '". $msg ."', `ed_c_deletehistory` = 7 where ed_c_id=1";
+		$wpdb->query( $sSql );
+		update_option( 'email-download-link', '2.3' );
+	}
+	
+	public static function ed_email_download_link_db_for_2_4() {
+		global $wpdb;
+		$sSql = "UPDATE ".$wpdb->prefix."ed_pluginconfig SET `ed_c_dowloadlink` = 'YES' where ed_c_id=1";
+		$wpdb->query( $sSql );
+		update_option( 'email-download-link', '2.4' );
+	}
+	
+	public static function ed_email_download_link_db_for_2_5() {
+		update_option( 'email-download-link', '2.5' );
+	}
+	
+	public static function ed_email_download_link_db_for_2_7() {
+		update_option( 'email-download-link', '2.7' );
 	}
 	
 	public static function ed_welcome() {
@@ -221,6 +333,7 @@ class ed_cls_registerhook
 	}
 }
 
+////////////// =========> This method not in USE
 class ed_form_submuit
 {
 	public static function ed_formdisplay($form_setting = array())
@@ -229,7 +342,6 @@ class ed_form_submuit
 		$ed_alt_nm = '';
 		$ed_alt_em = '';
 		$ed_alt_gp = '';
-		$ed_alt_pr = '';
 		$ed_alt_success = '';
 		$ed_alt_techerror = '';
 		$ed_alt_recaptcha = '';
@@ -282,7 +394,7 @@ class ed_form_submuit
 	
 		if ( isset( $_POST['ed_btn'] ) ) 
 		{
-			check_admin_referer('ed_form_subscribers');
+			//check_admin_referer('ed_form_subscribers');
 			
 			if($ed_name == "YES")
 			{
@@ -293,7 +405,6 @@ class ed_form_submuit
 				$ed_txt_nm = "";
 			}
 			
-			$ed_cb_pr = isset($_POST['ed_cb_pr']);
 			$ed_txt_em = isset($_POST['ed_txt_em']) ? sanitize_text_field($_POST['ed_txt_em']) : '';
 			$ed_id = isset($_POST['ed_txt_id']) ? sanitize_text_field($_POST['ed_txt_id']) : '';
 			
@@ -354,26 +465,43 @@ class ed_form_submuit
 			}
 			//////////////////////////////Robot verification//////////////////////////////////////////////////
 			
-			if($ed_cb_pr <> "iagree")
-			{
-				$ed_alt_pr = '<span class="ed_validation" style="'.ED_MSG_05.'">'.ED_MSG_08.'</span>';
-				$ed_error = true;
-			}
-			
 			if(!$ed_error)
 			{
 				$homeurl = home_url();
 				$samedomain = strpos($_SERVER['HTTP_REFERER'], $homeurl);
 				if (($samedomain !== false) && $samedomain < 5) 
-				{					
-					$sts = ed_cls_subscribers::ed_subscriber_create($ed_txt_nm, $ed_txt_em, $ed_id);
+				{
+					$savenameemail = "YES";
+					$plugin_settings = array();
+					$plugin_settings = ed_cls_settings::ed_setting_select(1);
+					if(count($plugin_settings) > 0)
+					{
+						$savenameemail = $plugin_settings['ed_c_savenameemail'];
+					}
+					
+					if($savenameemail == "NO")
+					{
+						$sts = ed_cls_subscribers::ed_subscriber_create("NA", "NA", $ed_id);
+					}
+					else
+					{
+						$sts = ed_cls_subscribers::ed_subscriber_create($ed_txt_nm, $ed_txt_em, $ed_id);
+					}
+					
 					if($sts == "suss")
 					{
-						$ed_email_id = ed_cls_subscribers::ed_subscriber_foremail($ed_txt_em, $ed_id);
+						if($savenameemail == "NO")
+						{
+							$ed_email_id = ed_cls_subscribers::ed_subscriber_foremail("NA", $ed_id);
+						}
+						else
+						{
+							$ed_email_id = ed_cls_subscribers::ed_subscriber_foremail($ed_txt_em, $ed_id);
+						}
 						
 						if($ed_email_id > 0)
 						{
-							$ed_email_id = ed_cls_sendemail::ed_sendemail_prepare($ed_email_id);
+							$ed_email_id = ed_cls_sendemail::ed_sendemail_prepare($ed_email_id, $ed_txt_nm, $ed_txt_em, "");
 						}
 						$ed_alt_success = '<span class="ed_sent_successfully" style="'.ED_MSG_06.'">'.ED_MSG_04.'</span>';
 					}
@@ -388,7 +516,7 @@ class ed_form_submuit
 		}
 		//////////////////////////////Robot verification//////////////////////////////////////////////////
 	
-		$ed = $ed . '<form method="post" action="' . esc_url( $_SERVER['REQUEST_URI'] ) . '">';
+		$ed = $ed . '<form method="post" action="' . esc_url( $_SERVER['REQUEST_URI'] ) . '#email-download-link">';
 		
 		if($ed_desc	<> "")
 		{
@@ -409,7 +537,7 @@ class ed_form_submuit
 					$ed = $ed . ' *';
 				}
 				$ed = $ed . '<br>';
-				$ed = $ed . '<span class="ed_css_txt">';
+				$ed = $ed . '<span id="email-download-link" class="ed_css_txt">';
 					$ed = $ed . '<input class="ed_tb_css" name="ed_txt_nm" id="ed_txt_nm" value="" maxlength="225" type="text">';
 				$ed = $ed . '</span>';
 				$ed = $ed . $ed_alt_nm;
@@ -462,19 +590,7 @@ class ed_form_submuit
 			$ed = $ed . '</p>';
 		}
 		//////////////////////////////Robot verification//////////////////////////////////////////////////
-
-        $settings = ed_cls_settings::ed_setting_select(1);
-        if($settings['ed_c_privacyconditionslink'] !== '') {
-            $ed = $ed . '<p>';
-            $ed = $ed . __('I agree with the <a href="$ed_c_privacyconditionslink">privacy conditions</a> *', 'email-download-link');
-            $ed = $ed . '<br>';
-            $ed = $ed . '<span class="ed_css_chb">';
-            $ed = $ed . '<input class="ed_cb_css" name="ed_cb_pr" id="ed_cb_pr" value="iagree" type="checkbox">';
-            $ed = $ed . '</span>';
-            $ed = $ed . '<br>' . $ed_alt_pr;
-            $ed = $ed . '</p>';
-        }
-
+		
 		$ed = $ed . '<p>';
 			$ed = $ed . '<input class="ed_bt_css" name="ed_btn" id="ed_btn" value="'.__('Send Download Link', 'email-download-link').'" type="submit">';
 			$ed = $ed . '<input name="ed_txt_id" id="ed_txt_id" value="'.$ed_email_form_guid.'" type="hidden">';
@@ -489,13 +605,14 @@ class ed_form_submuit
 			$ed = $ed . $ed_alt_success;
 		}
 		
-		$ed = $ed . wp_nonce_field('ed_form_subscribers');
+		//$ed = $ed . wp_nonce_field('ed_form_subscribers');
 		
 		$ed = $ed . '</form>';
 		
 		return $ed;
 	}
 }
+////////////// =========> This method not in USE
 	
 class ed_widget_register extends WP_Widget 
 {
@@ -527,17 +644,19 @@ class ed_widget_register extends WP_Widget
 			$ed_group = "";
 		}
 			
-		$form_setting = array(
+		$data = array(
 			'ed_title' 		=> $ed_title,
 			'ed_desc' 		=> $ed_desc,
 			'ed_name' 		=> $ed_name,
 			'ed_name_mand' 	=> $ed_name_mand,
 			'ed_group' 		=> $ed_group,
-			'ed_form_id' 	=> $ed_form_id
+			'ed_form_id' 	=> $ed_form_id,
+			'ed_phone' 		=> 'NO'
 		);
 		
-		$ed = ed_form_submuit::ed_formdisplay($form_setting);
-		echo $ed;
+		//$ed = ed_form_submuit::ed_formdisplay($form_setting);
+		ed_shortcode::render_ed_form($data);
+		//echo $ed;
 		
 		echo $args['after_widget'];
 	}
@@ -706,7 +825,7 @@ function ed_download_link( $namefield = "YES", $id = 0 )
 	{
 		$namefield = "NO";
 	}
-
+	
 	if(!is_numeric($id))
 	{
 		$id = 0;
@@ -719,7 +838,9 @@ function ed_download_link( $namefield = "YES", $id = 0 )
 	$arr["ed_name_mand"] 	= $namefield;
 	$arr["ed_group"] 		= "";
 	$arr["ed_form_id"] 		= $id;
-	echo ed_form_submuit::ed_formdisplay($arr);
+	$arr["ed_phone"] 		= "NO";
+	//echo ed_form_submuit::ed_formdisplay($arr);
+	ed_shortcode::render_ed_form($data);
 }
 
 function ed_cron_activation() 
@@ -740,33 +861,42 @@ function ed_cron_trigger_event()
 	$data = array();
 	$data = ed_cls_settings::ed_setting_select(1);
 	$ed_c_crontype = $data['ed_c_crontype'];
+	$ed_c_deletehistory = 0; 
+	$ed_c_deletehistory = isset($data['ed_c_deletehistory']) ? $data['ed_c_deletehistory'] : '0';
+	if(!is_numeric($ed_c_deletehistory)) { 
+		$ed_c_deletehistory = 0; 
+	}
 	
 	$urlrefresh = "NO";
-	if($ed_c_crontype <> "NO")
-	{
+	if($ed_c_crontype <> "NO") {
 		$current_day = date_i18n("l");
-		if($ed_c_crontype == "Daily")
-		{
+		if($ed_c_crontype == "Daily") {
 			$urlrefresh = "YES";
 		}
-		elseif(strtoupper($ed_c_crontype) == strtoupper($current_day))
-		{
+		elseif(strtoupper($ed_c_crontype) == strtoupper($current_day)) {
 			$urlrefresh = "YES";
 		}
-		elseif($ed_c_crontype == "SundayWednesday")
-		{
-			if(strtoupper($current_day) == "SUNDAY" || strtoupper($current_day) == "WEDNESDAY")
-			{
+		elseif($ed_c_crontype == "SundayWednesday") {
+			if(strtoupper($current_day) == "SUNDAY" || strtoupper($current_day) == "WEDNESDAY") {
+				$urlrefresh = "YES";
+			}
+		}
+		elseif($ed_c_crontype == "MondayWedFriday") {
+			if(strtoupper($current_day) == "MONDAY" || strtoupper($current_day) == "WEDNESDAY" || strtoupper($current_day) == "FRIDAY") {
 				$urlrefresh = "YES";
 			}
 		}
 	}
 	
-	if($urlrefresh == "YES")
-	{
+	if($urlrefresh == "YES") {
 		ed_cls_downloads::ed_download_link_cron_refresh();
 		ed_cls_sendemail::ed_sendemail_admincron();
 	}
+	
+	if($ed_c_deletehistory > 0) {
+		ed_cls_subscribers::ed_subscriber_delete_days($ed_c_deletehistory);
+	}
+	
 }
 add_action('ed_cron_downloadlink', 'ed_cron_trigger_event');
 ?>
